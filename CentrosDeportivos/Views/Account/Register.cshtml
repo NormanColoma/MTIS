@@ -2,6 +2,42 @@
 @{
     ViewBag.Title = "Register";
 }
+@Styles.Render("~/Content/register.css")
 
-<h2>Register</h2>
+<h2 class="title">Register</h2>
 
+<div class="row">
+
+    <section id="registerForm">
+
+        <div class="form-group">
+            <label class="col-md-2 control-label">Email</label>
+            <div class="col-md-10"><input class="form-control" type="text" /></div>
+        </div>
+
+        <div class="form-group">
+            <label class="col-md-2 control-label">Nombre</label>
+            <div class="col-md-10"><input class="form-control" type="text" /></div>
+        </div>
+
+        <div class="form-group">
+            <label class="col-md-2 control-label">Dni</label>
+            <div class="col-md-10"><input class="form-control" type="text" /></div>
+        </div>
+
+        <div class="form-group">
+            <label class="col-md-2 control-label">Contraseña</label>
+            <div class="col-md-10"><input class="form-control" type="password" /></div>
+        </div>
+        <div class="form-group">
+            <div class="col-md-10"><input class="btn btn-primary" type="submit" value="Registrar" /></div>
+        </div>
+
+
+    </section>
+
+
+
+
+
+</div>
