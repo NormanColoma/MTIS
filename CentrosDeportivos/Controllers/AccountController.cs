@@ -6,14 +6,13 @@ using System.Web.Mvc;
 
 namespace CentrosDeportivos.Controllers
 {
-    public class HomeController : Controller
+    public class AccountController : Controller
     {
-        public ActionResult Index()
+        //
+        // GET: /Account/
+        public ActionResult Register()
         {
             return View();
         }
-
-       
-
-    }
+	}
 }
