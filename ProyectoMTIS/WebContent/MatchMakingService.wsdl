@@ -1,0 +1,143 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<wsdl:definitions xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tns="http://www.example.org/MatchMakingService/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:xsd="http://www.w3.org/2001/XMLSchema" name="MatchMakingService" targetNamespace="http://www.example.org/MatchMakingService/">
+  <wsdl:types>
+    <xsd:schema targetNamespace="http://www.example.org/MatchMakingService/">
+      <xsd:element name="createMatch">
+        <xsd:complexType>
+          <xsd:sequence>
+          	<xsd:element name="match" type="tns:Match"></xsd:element>
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="createMatchResponse">
+        <xsd:complexType>
+          <xsd:sequence>
+          	<xsd:element name="message" type="xsd:string" />
+          	<xsd:element name="ok" type="xsd:boolean"></xsd:element>
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+    
+        
+      <xsd:complexType name="Match">
+      	<xsd:sequence>
+      		<xsd:element name="id" type="xsd:int"></xsd:element>
+      		<xsd:element name="teams" type="xsd:int" minOccurs="2"
+      			maxOccurs="2">
+      		</xsd:element>
+      		<xsd:element name="date" type="xsd:string"></xsd:element>
+
+      		<xsd:element name="sportCentre" type="xsd:int"></xsd:element>
+      		<xsd:element name="confirmed" type="xsd:string"></xsd:element>
+      	</xsd:sequence>
+      </xsd:complexType>
+      <xsd:element name="deleteMatch">
+      	<xsd:complexType>
+      		<xsd:sequence>
+
+      			<xsd:element name="macthID" type="xsd:int"></xsd:element>
+      		</xsd:sequence>
+      	</xsd:complexType>
+      </xsd:element>
+      <xsd:element name="deleteMatchResponse">
+      	<xsd:complexType>
+      		<xsd:sequence>
+
+      			<xsd:element name="ok" type="xsd:boolean"></xsd:element>
+      		</xsd:sequence>
+      	</xsd:complexType>
+      </xsd:element>
+      <xsd:element name="notifyTeam">
+      	<xsd:complexType>
+      		<xsd:sequence>
+
+      			<xsd:element name="teamID" type="xsd:int"></xsd:element>
+      		</xsd:sequence>
+      	</xsd:complexType>
+      </xsd:element>
+      <xsd:element name="notifyTeamResponse">
+      	<xsd:complexType>
+      		<xsd:sequence>
+
+      			<xsd:element name="message" type="xsd:string"></xsd:element>
+      		</xsd:sequence>
+      	</xsd:complexType>
+      </xsd:element>
+      <xsd:element name="confirmMatch">
+      	<xsd:complexType>
+      		<xsd:sequence>
+
+      			<xsd:element name="id" type="xsd:int"></xsd:element>
+      		</xsd:sequence>
+      	</xsd:complexType>
+      </xsd:element>
+      <xsd:element name="confirmMatchResponse">
+      	<xsd:complexType>
+      		<xsd:sequence>
+
+      			<xsd:element name="message" type="xsd:string"></xsd:element>
+      		</xsd:sequence>
+      	</xsd:complexType>
+      </xsd:element>
+    </xsd:schema>
+  </wsdl:types>
+  <wsdl:message name="createMatchRequest">
+    <wsdl:part element="tns:createMatch" name="parameters"/>
+  </wsdl:message>
+  <wsdl:message name="createMatchResponse">
+    <wsdl:part element="tns:createMatchResponse" name="parameters"/>
+  </wsdl:message>
+  <wsdl:message name="deleteMatchRequest">
+  	<wsdl:part name="parameters" element="tns:deleteMatch"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="deleteMatchResponse">
+  	<wsdl:part name="parameters" element="tns:deleteMatchResponse"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="notifyTeamRequest">
+  	<wsdl:part name="parameters" element="tns:notifyTeam"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="notifyTeamResponse">
+  	<wsdl:part name="parameters" element="tns:notifyTeamResponse"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="confirmMatchRequest">
+  	<wsdl:part name="parameters" element="tns:confirmMatch"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="confirmMatchResponse">
+  	<wsdl:part name="parameters" element="tns:confirmMatchResponse"></wsdl:part>
+  </wsdl:message>
+  <wsdl:portType name="MatchMakingService">
+    <wsdl:operation name="createMatch">
+      <wsdl:input message="tns:createMatchRequest"/>
+      <wsdl:output message="tns:createMatchResponse"/>
+    </wsdl:operation>
+    <wsdl:operation name="deleteMatch">
+    	<wsdl:input message="tns:deleteMatchRequest"></wsdl:input>
+    	<wsdl:output message="tns:deleteMatchResponse"></wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="notifyTeam">
+    	<wsdl:input message="tns:notifyTeamRequest"></wsdl:input>
+    	<wsdl:output message="tns:notifyTeamResponse"></wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="confirmMatch">
+    	<wsdl:input message="tns:confirmMatchRequest"></wsdl:input>
+    	<wsdl:output message="tns:confirmMatchResponse"></wsdl:output>
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="MatchMakingServiceSOAP" type="tns:MatchMakingService">
+    <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+    <wsdl:operation name="createMatch">
+      <soap:operation soapAction="http://www.example.org/MatchMakingService/createMatch"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="MatchMakingService">
+    <wsdl:port binding="tns:MatchMakingServiceSOAP" name="MatchMakingServiceSOAP">
+      <soap:address location="http://www.example.org/"/>
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>
