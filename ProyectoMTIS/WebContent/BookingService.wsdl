@@ -26,10 +26,8 @@
 
       		<xsd:element name="payMethodSelected" type="xsd:string"></xsd:element>
       		<xsd:element name="sport" type="xsd:string"></xsd:element>
-      		<xsd:element name="idField" type="xsd:string"></xsd:element>
-      		<xsd:element name="date" type="xsd:string"></xsd:element>
-      		<xsd:element name="hourStart" type="xsd:string"></xsd:element>
-      		<xsd:element name="hourEnd" type="xsd:string"></xsd:element>
+      		<xsd:element name="idField" type="xsd:int"></xsd:element>
+      		<xsd:element name="date" type="xsd:string"></xsd:element>
       	</xsd:sequence>
       </xsd:complexType>
       <xsd:element name="createBooking">
@@ -103,9 +101,7 @@
       		<xsd:sequence>
 
       			<xsd:element name="sportCenter" type="xsd:string"></xsd:element>
-      			<xsd:element name="date" type="xsd:string"></xsd:element>
-      			<xsd:element name="startHour" type="xsd:string"></xsd:element>
-      			<xsd:element name="endHour" type="xsd:string"></xsd:element>
+      			<xsd:element name="date" type="xsd:string"></xsd:element>
       		</xsd:sequence>
       	</xsd:complexType>
       </xsd:element>
@@ -130,6 +126,22 @@
       		<xsd:element name="disponibility" type="xsd:boolean"></xsd:element>
       	</xsd:sequence>
       </xsd:complexType>
+      <xsd:element name="validateMethod">
+      	<xsd:complexType>
+      		<xsd:sequence>
+
+      			<xsd:element name="payMethod" type="xsd:string"></xsd:element>
+      		</xsd:sequence>
+      	</xsd:complexType>
+      </xsd:element>
+      <xsd:element name="validateMethodResponse">
+      	<xsd:complexType>
+      		<xsd:sequence>
+
+      			<xsd:element name="out" type="xsd:string"></xsd:element>
+      		</xsd:sequence>
+      	</xsd:complexType>
+      </xsd:element>
     </xsd:schema>
   </wsdl:types>
   <wsdl:message name="validateBookingRequest">
@@ -168,6 +180,12 @@
   <wsdl:message name="getFieldsResponse">
   	<wsdl:part name="parameters" element="tns:getFieldsResponse"></wsdl:part>
   </wsdl:message>
+  <wsdl:message name="validateMethodRequest">
+  	<wsdl:part name="parameters" element="tns:validateMethod"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="validateMethodResponse">
+  	<wsdl:part name="parameters" element="tns:validateMethodResponse"></wsdl:part>
+  </wsdl:message>
   <wsdl:portType name="BookingService">
     <wsdl:operation name="validateBooking">
       <wsdl:input message="tns:validateBookingRequest"/>
@@ -189,7 +207,7 @@
     <wsdl:operation name="getFields">
     	<wsdl:input message="tns:getFieldsRequest"></wsdl:input>
     	<wsdl:output message="tns:getFieldsResponse"></wsdl:output>
-    </wsdl:operation>
+    </wsdl:operation>
   </wsdl:portType>
   <wsdl:binding name="BookingServiceSOAP" type="tns:BookingService">
 
@@ -209,49 +227,61 @@
   		</wsdl:output>
   	</wsdl:operation>
   	<wsdl:operation name="createBooking">
+
   		<soap:operation
   			soapAction="http://www.example.org/BookingService/createBooking" />
   		<wsdl:input>
+
   			<soap:body use="literal" />
   		</wsdl:input>
   		<wsdl:output>
+
   			<soap:body use="literal" />
   		</wsdl:output>
   	</wsdl:operation>
   	<wsdl:operation name="cancelBooking">
+
   		<soap:operation
   			soapAction="http://www.example.org/BookingService/cancelBooking" />
   		<wsdl:input>
+
   			<soap:body use="literal" />
   		</wsdl:input>
   		<wsdl:output>
+
   			<soap:body use="literal" />
   		</wsdl:output>
   	</wsdl:operation>
   	<wsdl:operation name="getBooking">
+
   		<soap:operation
   			soapAction="http://www.example.org/BookingService/getBooking" />
   		<wsdl:input>
+
   			<soap:body use="literal" />
   		</wsdl:input>
   		<wsdl:output>
+
   			<soap:body use="literal" />
   		</wsdl:output>
   	</wsdl:operation>
   	<wsdl:operation name="getFields">
+
   		<soap:operation
   			soapAction="http://www.example.org/BookingService/getFields" />
   		<wsdl:input>
+
   			<soap:body use="literal" />
   		</wsdl:input>
   		<wsdl:output>
+
   			<soap:body use="literal" />
   		</wsdl:output>
   	</wsdl:operation>
   </wsdl:binding>
   <wsdl:service name="BookingService">
     <wsdl:port binding="tns:BookingServiceSOAP" name="BookingServiceSOAP">
-      <soap:address location="http://localhost:9080/ProyectoMTIS/services/bookingService"/>
+      <soap:address location="http://localhost:9080/ProyectoMTIS/services/BookingService"/>
     </wsdl:port>
   </wsdl:service>
 </wsdl:definitions>
