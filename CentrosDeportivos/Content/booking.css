@@ -1,0 +1,18 @@
+﻿.booking-date, .booking-time{
+    float:left;
+    margin-right:10px;
+}
+
+.booking-date-label{
+  float: left;
+  width: 100%;
+}
+
+.booking-date-container{
+    float:left;
+    width:100%;
+}
+
+.form-group{
+    margin-bottom:30px;
+}
