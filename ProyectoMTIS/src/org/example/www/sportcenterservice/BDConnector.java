@@ -34,7 +34,7 @@ public class BDConnector {
 		 try {
 	            rs = st.executeQuery("SELECT * FROM sportcenter where id ="+id);
 	            while (rs.next()) {  	 
-	            	 sc = new SportCenter(rs.getInt(1), rs.getString(2),rs.getString(3),rs.getString(4),null);
+	            	 sc = new SportCenter(rs.getInt(1), rs.getString(2),rs.getString(3),rs.getString(4));
 	            }
 	            return sc;
 
@@ -102,4 +102,32 @@ public class BDConnector {
 	        	 
 	        }
 	}
+	
+	
+	public  ArrayList<Field> getFields(int id_sc, int id_sport){
+		ArrayList<Field> fields = new ArrayList<Field>();
+		 try {
+	            rs = st.executeQuery("SELECT * FROM field where id_sport ="+id_sport+" and sportCenter ="+id_sc);
+	            
+	            while (rs.next()) {
+	            	 Field f = new Field(rs.getInt(1), rs.getInt(2),rs.getString(3));
+	            	 fields.add(f);
+	            }
+	            return fields;
+
+	        } catch (SQLException ex) {
+	        	System.out.println("Error: "+ ex.getMessage());
+	        	return fields;
+	        }
+	        finally{
+	        	try {
+					st.close();
+				} catch (SQLException e) {
+					e.printStackTrace();
+				}
+	        	 
+	        }
+	}
+	
+	
 }

@@ -13,7 +13,10 @@ namespace CentrosDeportivos.Controllers
             return View();
         }
 
-       
+        public ActionResult Centers()
+        {
+            return View();
+        }
 
     }
 }
