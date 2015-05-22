@@ -1,0 +1,142 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<wsdl:definitions xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tns="http://www.example.org/CourseService/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:xsd="http://www.w3.org/2001/XMLSchema" name="CourseService" targetNamespace="http://www.example.org/CourseService/">
+  <wsdl:types>
+    <xsd:schema targetNamespace="http://www.example.org/CourseService/">
+      <xsd:element name="getCourse">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="id" type="xsd:int"/>
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="getCourseResponse">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="course" type="tns:Course"/>
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+    
+      <xsd:complexType name="Course">
+      	<xsd:sequence>
+      		<xsd:element name="id" type="xsd:int"></xsd:element>
+      		<xsd:element name="name" type="xsd:string"></xsd:element>
+      		<xsd:element name="sport" type="xsd:string"></xsd:element>
+      		<xsd:element name="startDate" type="xsd:string"></xsd:element>
+      		<xsd:element name="endDate" type="xsd:string"></xsd:element>
+      		<xsd:element name="members" type="xsd:int" minOccurs="0" maxOccurs="30"></xsd:element>
+      	</xsd:sequence>
+      </xsd:complexType>
+      <xsd:element name="createCourse">
+      	<xsd:complexType>
+      		<xsd:sequence>
+
+      			<xsd:element name="course" type="tns:Course"></xsd:element>
+      		</xsd:sequence>
+      	</xsd:complexType>
+      </xsd:element>
+      <xsd:element name="createCourseResponse">
+      	<xsd:complexType>
+      		<xsd:sequence>
+
+      			<xsd:element name="message" type="xsd:string"></xsd:element>
+      			<xsd:element name="created" type="xsd:boolean"></xsd:element>
+      		</xsd:sequence>
+      	</xsd:complexType>
+      </xsd:element>
+      <xsd:element name="deleteCourse">
+      	<xsd:complexType>
+      		<xsd:sequence>
+
+      			<xsd:element name="course" type="xsd:int"></xsd:element>
+      		</xsd:sequence>
+      	</xsd:complexType>
+      </xsd:element>
+      <xsd:element name="deleteCourseResponse">
+      	<xsd:complexType>
+      		<xsd:sequence>
+
+      			<xsd:element name="message" type="xsd:string"></xsd:element>
+      			<xsd:element name="deleted" type="xsd:boolean"></xsd:element>
+      		</xsd:sequence>
+      	</xsd:complexType>
+      </xsd:element>
+      <xsd:element name="addMember">
+      	<xsd:complexType>
+      		<xsd:sequence>
+
+      			<xsd:element name="member" type="xsd:string"></xsd:element>
+      			<xsd:element name="course" type="xsd:int"></xsd:element>
+      		</xsd:sequence>
+      	</xsd:complexType>
+      </xsd:element>
+      <xsd:element name="addMemberResponse">
+      	<xsd:complexType>
+      		<xsd:sequence>
+
+      			<xsd:element name="out" type="xsd:string"></xsd:element>
+      		</xsd:sequence>
+      	</xsd:complexType>
+      </xsd:element>
+    </xsd:schema>
+  </wsdl:types>
+  <wsdl:message name="getCourseRequest">
+    <wsdl:part element="tns:getCourse" name="parameters"/>
+  </wsdl:message>
+  <wsdl:message name="getCourseResponse">
+    <wsdl:part element="tns:getCourseResponse" name="parameters"/>
+  </wsdl:message>
+  <wsdl:message name="createCourseRequest">
+  	<wsdl:part name="parameters" element="tns:createCourse"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="createCourseResponse">
+  	<wsdl:part name="parameters" element="tns:createCourseResponse"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="deleteCourseRequest">
+  	<wsdl:part name="parameters" element="tns:deleteCourse"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="deleteCourseResponse">
+  	<wsdl:part name="parameters" element="tns:deleteCourseResponse"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="addMemberRequest">
+  	<wsdl:part name="parameters" element="tns:addMember"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="addMemberResponse">
+  	<wsdl:part name="parameters" element="tns:addMemberResponse"></wsdl:part>
+  </wsdl:message>
+  <wsdl:portType name="CourseService">
+    <wsdl:operation name="getCourse">
+      <wsdl:input message="tns:getCourseRequest"/>
+      <wsdl:output message="tns:getCourseResponse"/>
+    </wsdl:operation>
+    <wsdl:operation name="createCourse">
+    	<wsdl:input message="tns:createCourseRequest"></wsdl:input>
+    	<wsdl:output message="tns:createCourseResponse"></wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="deleteCourse">
+    	<wsdl:input message="tns:deleteCourseRequest"></wsdl:input>
+    	<wsdl:output message="tns:deleteCourseResponse"></wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="addMember">
+    	<wsdl:input message="tns:addMemberRequest"></wsdl:input>
+    	<wsdl:output message="tns:addMemberResponse"></wsdl:output>
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="CourseServiceSOAP" type="tns:CourseService">
+    <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+    <wsdl:operation name="getCourse">
+      <soap:operation soapAction="http://www.example.org/CourseService/getCourse"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="CourseService">
+    <wsdl:port binding="tns:CourseServiceSOAP" name="CourseServiceSOAP">
+      <soap:address location="http://www.example.org/"/>
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

@@ -1,0 +1,185 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<wsdl:definitions xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tns="http://www.example.org/MembershipService/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:xsd="http://www.w3.org/2001/XMLSchema" name="MembershipService" targetNamespace="http://www.example.org/MembershipService/">
+  <wsdl:types>
+    <xsd:schema targetNamespace="http://www.example.org/MembershipService/">
+      <xsd:element name="registerMember">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="member" type="tns:Member"/>
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="registerMemberResponse">
+        <xsd:complexType>
+          <xsd:sequence>
+          	<xsd:element name="message" type="xsd:string" />
+          	<xsd:element name="status" type="xsd:boolean"></xsd:element>
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+    
+      <xsd:complexType name="Member">
+      	<xsd:sequence>
+      		<xsd:element name="code" type="xsd:string"></xsd:element>
+      		<xsd:element name="email" type="xsd:string"></xsd:element>
+      		<xsd:element name="name" type="xsd:string"></xsd:element>
+      		<xsd:element name="surname" type="xsd:string"></xsd:element>
+      		<xsd:element name="NIF" type="xsd:string"></xsd:element>
+      		<xsd:element name="Province" type="xsd:string"></xsd:element>
+      		<xsd:element name="City" type="xsd:string"></xsd:element>
+      		<xsd:element name="VIP" type="xsd:boolean"></xsd:element>
+      	</xsd:sequence>
+      </xsd:complexType>
+      <xsd:element name="getMember">
+      	<xsd:complexType>
+      		<xsd:sequence>
+
+      			<xsd:element name="code" type="xsd:string"></xsd:element>
+      		</xsd:sequence>
+      	</xsd:complexType>
+      </xsd:element>
+      <xsd:element name="getMemberResponse">
+      	<xsd:complexType>
+      		<xsd:sequence>
+
+      			<xsd:element name="member" type="tns:Member"></xsd:element>
+      		</xsd:sequence>
+      	</xsd:complexType>
+      </xsd:element>
+      <xsd:element name="updateMember">
+      	<xsd:complexType>
+      		<xsd:sequence>
+
+      			<xsd:element name="member" type="tns:Member"></xsd:element>
+      		</xsd:sequence>
+      	</xsd:complexType>
+      </xsd:element>
+      <xsd:element name="updateMemberResponse">
+      	<xsd:complexType>
+      		<xsd:sequence>
+
+      			<xsd:element name="status" type="xsd:boolean"></xsd:element>
+      			<xsd:element name="message" type="xsd:string"></xsd:element>
+      		</xsd:sequence>
+      	</xsd:complexType>
+      </xsd:element>
+      <xsd:element name="validateMember">
+      	<xsd:complexType>
+      		<xsd:sequence>
+
+      			<xsd:element name="memberCode" type="xsd:int"></xsd:element>
+      		</xsd:sequence>
+      	</xsd:complexType>
+      </xsd:element>
+      <xsd:element name="validateMemberResponse">
+      	<xsd:complexType>
+      		<xsd:sequence>
+
+      			<xsd:element name="valid" type="xsd:boolean"></xsd:element>
+      		</xsd:sequence>
+      	</xsd:complexType>
+      </xsd:element>
+      <xsd:element name="checkMember">
+      	<xsd:complexType>
+      		<xsd:sequence>
+
+      			<xsd:element name="memberCode" type="xsd:string"></xsd:element>
+      		</xsd:sequence>
+      	</xsd:complexType>
+      </xsd:element>
+      <xsd:element name="checkMemberResponse">
+      	<xsd:complexType>
+      		<xsd:sequence>
+
+      			<xsd:element name="message" type="xsd:string"></xsd:element>
+      			<xsd:element name="ok" type="xsd:boolean"></xsd:element>
+      		</xsd:sequence>
+      	</xsd:complexType>
+      </xsd:element>
+      <xsd:element name="sendRegistration">
+      	<xsd:complexType>
+      		<xsd:sequence>
+
+      			<xsd:element name="in" type="xsd:string"></xsd:element>
+      		</xsd:sequence>
+      	</xsd:complexType>
+      </xsd:element>
+      <xsd:element name="sendRegistrationResponse">
+      	<xsd:complexType>
+      		<xsd:sequence>
+
+      			<xsd:element name="out" type="xsd:string"></xsd:element>
+      		</xsd:sequence>
+      	</xsd:complexType>
+      </xsd:element>
+    </xsd:schema>
+  </wsdl:types>
+  <wsdl:message name="registerMemberRequest">
+    <wsdl:part element="tns:registerMember" name="parameters"/>
+  </wsdl:message>
+  <wsdl:message name="registerMemberResponse">
+    <wsdl:part element="tns:registerMemberResponse" name="parameters"/>
+  </wsdl:message>
+  <wsdl:message name="getMemberRequest">
+  	<wsdl:part name="parameters" element="tns:getMember"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getMemberResponse">
+  	<wsdl:part name="parameters" element="tns:getMemberResponse"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="updateMemberRequest">
+  	<wsdl:part name="parameters" element="tns:updateMember"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="updateMemberResponse">
+  	<wsdl:part name="parameters" element="tns:updateMemberResponse"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="validateMemberRequest">
+  	<wsdl:part name="parameters" element="tns:validateMember"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="validateMemberResponse">
+  	<wsdl:part name="parameters" element="tns:validateMemberResponse"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="checkMemberRequest">
+  	<wsdl:part name="parameters" element="tns:checkMember"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="checkMemberResponse">
+  	<wsdl:part name="parameters" element="tns:checkMemberResponse"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="sendRegistrationRequest">
+  	<wsdl:part name="parameters" element="tns:sendRegistration"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="sendRegistrationResponse">
+  	<wsdl:part name="parameters" element="tns:sendRegistrationResponse"></wsdl:part>
+  </wsdl:message>
+  <wsdl:portType name="MembershipService">
+    <wsdl:operation name="registerMember">
+      <wsdl:input message="tns:registerMemberRequest"/>
+      <wsdl:output message="tns:registerMemberResponse"/>
+    </wsdl:operation>
+    <wsdl:operation name="getMember">
+    	<wsdl:input message="tns:getMemberRequest"></wsdl:input>
+    	<wsdl:output message="tns:getMemberResponse"></wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="updateMember">
+    	<wsdl:input message="tns:updateMemberRequest"></wsdl:input>
+    	<wsdl:output message="tns:updateMemberResponse"></wsdl:output>
+    </wsdl:operation>    <wsdl:operation name="checkMember">    	<wsdl:input message="tns:checkMemberRequest"></wsdl:input>    	<wsdl:output message="tns:checkMemberResponse"></wsdl:output>
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="MembershipServiceSOAP" type="tns:MembershipService">
+    <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+    <wsdl:operation name="registerMember">
+      <soap:operation soapAction="http://www.example.org/MembershipService/registerMember"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="MembershipService">
+    <wsdl:port binding="tns:MembershipServiceSOAP" name="MembershipServiceSOAP">
+      <soap:address location="http://www.example.org/"/>
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

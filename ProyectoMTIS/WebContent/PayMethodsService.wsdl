@@ -1,0 +1,134 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<wsdl:definitions xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tns="http://www.example.org/PayMethodsService/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:xsd="http://www.w3.org/2001/XMLSchema" name="PayMethodsService" targetNamespace="http://www.example.org/PayMethodsService/">
+  <wsdl:types>
+    <xsd:schema targetNamespace="http://www.example.org/PayMethodsService/">
+      <xsd:element name="validateIBAN">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="iban" type="xsd:string"/>
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="validateIBANResponse">
+        <xsd:complexType>
+          <xsd:sequence>
+          	<xsd:element name="message" type="xsd:string" />
+          	<xsd:element name="status" type="xsd:boolean"></xsd:element>
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="validateCreditCard">
+      	<xsd:complexType>
+      		<xsd:sequence>
+
+      			<xsd:element name="number" type="xsd:string"></xsd:element>
+      			<xsd:element name="cvs" type="xsd:string"></xsd:element>
+      			<xsd:element name="date" type="xsd:string"></xsd:element>
+      		</xsd:sequence>
+      	</xsd:complexType>
+      </xsd:element>
+      <xsd:element name="validateCreditCardResponse">
+      	<xsd:complexType>
+      		<xsd:sequence>
+
+      			<xsd:element name="message" type="xsd:string"></xsd:element>
+      			<xsd:element name="status" type="xsd:boolean"></xsd:element>
+      		</xsd:sequence>
+      	</xsd:complexType>
+      </xsd:element>
+      <xsd:element name="validateMethod">
+      	<xsd:complexType>
+      		<xsd:sequence>
+
+      			<xsd:element name="payMethod" type="xsd:string"></xsd:element>
+      		</xsd:sequence>
+      	</xsd:complexType>
+      </xsd:element>
+      <xsd:element name="validateMethodResponse">
+      	<xsd:complexType>
+      		<xsd:sequence>
+
+      			<xsd:element name="status" type="xsd:boolean"></xsd:element>
+      			<xsd:element name="message" type="xsd:string"></xsd:element>
+      		</xsd:sequence>
+      	</xsd:complexType>
+      </xsd:element>
+    </xsd:schema>
+  </wsdl:types>
+  <wsdl:message name="validateIBANRequest">
+    <wsdl:part element="tns:validateIBAN" name="parameters"/>
+  </wsdl:message>
+  <wsdl:message name="validateIBANResponse">
+    <wsdl:part element="tns:validateIBANResponse" name="parameters"/>
+  </wsdl:message>
+  <wsdl:message name="validateCreditCardRequest">
+  	<wsdl:part name="parameters" element="tns:validateCreditCard"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="validateCreditCardResponse">
+  	<wsdl:part name="parameters" element="tns:validateCreditCardResponse"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="validateMethodRequest">
+  	<wsdl:part name="parameters" element="tns:validateMethod"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="validateMethodResponse">
+  	<wsdl:part name="parameters" element="tns:validateMethodResponse"></wsdl:part>
+  </wsdl:message>
+  <wsdl:portType name="PayMethodsService">
+    <wsdl:operation name="validateIBAN">
+      <wsdl:input message="tns:validateIBANRequest"/>
+      <wsdl:output message="tns:validateIBANResponse"/>
+    </wsdl:operation>
+    <wsdl:operation name="validateCreditCard">
+    	<wsdl:input message="tns:validateCreditCardRequest"></wsdl:input>
+    	<wsdl:output message="tns:validateCreditCardResponse"></wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="validateMethod">
+    	<wsdl:input message="tns:validateMethodRequest"></wsdl:input>
+    	<wsdl:output message="tns:validateMethodResponse"></wsdl:output>
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="PayMethodsServiceSOAP"
+  	type="tns:PayMethodsService">
+
+  	<soap:binding style="document"
+  		transport="http://schemas.xmlsoap.org/soap/http" />
+  	<wsdl:operation name="validateIBAN">
+
+  		<soap:operation
+  			soapAction="http://www.example.org/PayMethodsService/validateIBAN" />
+  		<wsdl:input>
+
+  			<soap:body use="literal" />
+  		</wsdl:input>
+  		<wsdl:output>
+
+  			<soap:body use="literal" />
+  		</wsdl:output>
+  	</wsdl:operation>
+  	<wsdl:operation name="validateCreditCard">
+  		<soap:operation
+  			soapAction="http://www.example.org/PayMethodsService/validateCreditCard" />
+  		<wsdl:input>
+  			<soap:body use="literal" />
+  		</wsdl:input>
+  		<wsdl:output>
+  			<soap:body use="literal" />
+  		</wsdl:output>
+  	</wsdl:operation>
+  	<wsdl:operation name="validateMethod">
+  		<soap:operation
+  			soapAction="http://www.example.org/PayMethodsService/validateMethod" />
+  		<wsdl:input>
+  			<soap:body use="literal" />
+  		</wsdl:input>
+  		<wsdl:output>
+  			<soap:body use="literal" />
+  		</wsdl:output>
+  	</wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="PayMethodsService">
+    <wsdl:port binding="tns:PayMethodsServiceSOAP" name="PayMethodsServiceSOAP">
+      <soap:address location="http://localhost:9080/ProyectoMTIS/services/payMethodsService"/>
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>
