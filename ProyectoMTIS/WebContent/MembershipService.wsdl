@@ -20,7 +20,7 @@
     
       <xsd:complexType name="Member">
       	<xsd:sequence>
-      		<xsd:element name="code" type="xsd:string"></xsd:element>
+      		<xsd:element name="code" type="xsd:int"></xsd:element>
       		<xsd:element name="email" type="xsd:string"></xsd:element>
       		<xsd:element name="name" type="xsd:string"></xsd:element>
       		<xsd:element name="surname" type="xsd:string"></xsd:element>
@@ -28,13 +28,14 @@
       		<xsd:element name="Province" type="xsd:string"></xsd:element>
       		<xsd:element name="City" type="xsd:string"></xsd:element>
       		<xsd:element name="VIP" type="xsd:boolean"></xsd:element>
+      		<xsd:element name="img" type="xsd:string"></xsd:element>
       	</xsd:sequence>
       </xsd:complexType>
       <xsd:element name="getMember">
       	<xsd:complexType>
       		<xsd:sequence>
 
-      			<xsd:element name="code" type="xsd:string"></xsd:element>
+      			<xsd:element name="code" type="xsd:int"></xsd:element>
       		</xsd:sequence>
       	</xsd:complexType>
       </xsd:element>
@@ -83,7 +84,7 @@
       	<xsd:complexType>
       		<xsd:sequence>
 
-      			<xsd:element name="memberCode" type="xsd:string"></xsd:element>
+      			<xsd:element name="memberCode" type="xsd:int"></xsd:element>
       		</xsd:sequence>
       	</xsd:complexType>
       </xsd:element>
@@ -165,21 +166,58 @@
     </wsdl:operation>    <wsdl:operation name="checkMember">    	<wsdl:input message="tns:checkMemberRequest"></wsdl:input>    	<wsdl:output message="tns:checkMemberResponse"></wsdl:output>
     </wsdl:operation>
   </wsdl:portType>
-  <wsdl:binding name="MembershipServiceSOAP" type="tns:MembershipService">
-    <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
-    <wsdl:operation name="registerMember">
-      <soap:operation soapAction="http://www.example.org/MembershipService/registerMember"/>
-      <wsdl:input>
-        <soap:body use="literal"/>
-      </wsdl:input>
-      <wsdl:output>
-        <soap:body use="literal"/>
-      </wsdl:output>
-    </wsdl:operation>
+  <wsdl:binding name="MembershipServiceSOAP"
+  	type="tns:MembershipService">
+
+  	<soap:binding style="document"
+  		transport="http://schemas.xmlsoap.org/soap/http" />
+  	<wsdl:operation name="registerMember">
+
+  		<soap:operation
+  			soapAction="http://www.example.org/MembershipService/registerMember" />
+  		<wsdl:input>
+
+  			<soap:body use="literal" />
+  		</wsdl:input>
+  		<wsdl:output>
+
+  			<soap:body use="literal" />
+  		</wsdl:output>
+  	</wsdl:operation>
+  	<wsdl:operation name="getMember">
+  		<soap:operation
+  			soapAction="http://www.example.org/MembershipService/getMember" />
+  		<wsdl:input>
+  			<soap:body use="literal" />
+  		</wsdl:input>
+  		<wsdl:output>
+  			<soap:body use="literal" />
+  		</wsdl:output>
+  	</wsdl:operation>
+  	<wsdl:operation name="updateMember">
+  		<soap:operation
+  			soapAction="http://www.example.org/MembershipService/updateMember" />
+  		<wsdl:input>
+  			<soap:body use="literal" />
+  		</wsdl:input>
+  		<wsdl:output>
+  			<soap:body use="literal" />
+  		</wsdl:output>
+  	</wsdl:operation>
+  	<wsdl:operation name="checkMember">
+  		<soap:operation
+  			soapAction="http://www.example.org/MembershipService/checkMember" />
+  		<wsdl:input>
+  			<soap:body use="literal" />
+  		</wsdl:input>
+  		<wsdl:output>
+  			<soap:body use="literal" />
+  		</wsdl:output>
+  	</wsdl:operation>
   </wsdl:binding>
   <wsdl:service name="MembershipService">
     <wsdl:port binding="tns:MembershipServiceSOAP" name="MembershipServiceSOAP">
-      <soap:address location="http://www.example.org/"/>
+      <soap:address location="http://localhost:9080/ProyectoMTIS/services/MembershipService"/>
     </wsdl:port>
   </wsdl:service>
 </wsdl:definitions>
