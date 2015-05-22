@@ -56,22 +56,60 @@
                                                     "getSportCenters"));
                                     } else 
 
+            if("getFields".equals(methodName)){
+                
+                org.example.www.sportcenterservice.GetFieldsResponse getFieldsResponse3 = null;
+	                        org.example.www.sportcenterservice.GetFields wrappedParam =
+                                                             (org.example.www.sportcenterservice.GetFields)fromOM(
+                                    msgContext.getEnvelope().getBody().getFirstElement(),
+                                    org.example.www.sportcenterservice.GetFields.class,
+                                    getEnvelopeNamespaces(msgContext.getEnvelope()));
+                                                
+                                               getFieldsResponse3 =
+                                                   
+                                                   
+                                                         skel.getFields(wrappedParam)
+                                                    ;
+                                            
+                                        envelope = toEnvelope(getSOAPFactory(msgContext), getFieldsResponse3, false, new javax.xml.namespace.QName("http://www.example.org/SportCenterService/",
+                                                    "getFields"));
+                                    } else 
+
+            if("getSports".equals(methodName)){
+                
+                org.example.www.sportcenterservice.GetSportsResponse getSportsResponse5 = null;
+	                        org.example.www.sportcenterservice.GetSports wrappedParam =
+                                                             (org.example.www.sportcenterservice.GetSports)fromOM(
+                                    msgContext.getEnvelope().getBody().getFirstElement(),
+                                    org.example.www.sportcenterservice.GetSports.class,
+                                    getEnvelopeNamespaces(msgContext.getEnvelope()));
+                                                
+                                               getSportsResponse5 =
+                                                   
+                                                   
+                                                         skel.getSports(wrappedParam)
+                                                    ;
+                                            
+                                        envelope = toEnvelope(getSOAPFactory(msgContext), getSportsResponse5, false, new javax.xml.namespace.QName("http://www.example.org/SportCenterService/",
+                                                    "getSports"));
+                                    } else 
+
             if("getSportCenter".equals(methodName)){
                 
-                org.example.www.sportcenterservice.GetSportCenterResponse getSportCenterResponse3 = null;
+                org.example.www.sportcenterservice.GetSportCenterResponse getSportCenterResponse7 = null;
 	                        org.example.www.sportcenterservice.GetSportCenter wrappedParam =
                                                              (org.example.www.sportcenterservice.GetSportCenter)fromOM(
                                     msgContext.getEnvelope().getBody().getFirstElement(),
                                     org.example.www.sportcenterservice.GetSportCenter.class,
                                     getEnvelopeNamespaces(msgContext.getEnvelope()));
                                                 
-                                               getSportCenterResponse3 =
+                                               getSportCenterResponse7 =
                                                    
                                                    
                                                          skel.getSportCenter(wrappedParam)
                                                     ;
                                             
-                                        envelope = toEnvelope(getSOAPFactory(msgContext), getSportCenterResponse3, false, new javax.xml.namespace.QName("http://www.example.org/SportCenterService/",
+                                        envelope = toEnvelope(getSOAPFactory(msgContext), getSportCenterResponse7, false, new javax.xml.namespace.QName("http://www.example.org/SportCenterService/",
                                                     "getSportCenter"));
                                     
             } else {
@@ -108,6 +146,62 @@
             
                         try{
                              return param.getOMElement(org.example.www.sportcenterservice.GetSportCentersResponse.MY_QNAME,
+                                          org.apache.axiom.om.OMAbstractFactory.getOMFactory());
+                        } catch(org.apache.axis2.databinding.ADBException e){
+                            throw org.apache.axis2.AxisFault.makeFault(e);
+                        }
+                    
+
+            }
+        
+            private  org.apache.axiom.om.OMElement  toOM(org.example.www.sportcenterservice.GetFields param, boolean optimizeContent)
+            throws org.apache.axis2.AxisFault {
+
+            
+                        try{
+                             return param.getOMElement(org.example.www.sportcenterservice.GetFields.MY_QNAME,
+                                          org.apache.axiom.om.OMAbstractFactory.getOMFactory());
+                        } catch(org.apache.axis2.databinding.ADBException e){
+                            throw org.apache.axis2.AxisFault.makeFault(e);
+                        }
+                    
+
+            }
+        
+            private  org.apache.axiom.om.OMElement  toOM(org.example.www.sportcenterservice.GetFieldsResponse param, boolean optimizeContent)
+            throws org.apache.axis2.AxisFault {
+
+            
+                        try{
+                             return param.getOMElement(org.example.www.sportcenterservice.GetFieldsResponse.MY_QNAME,
+                                          org.apache.axiom.om.OMAbstractFactory.getOMFactory());
+                        } catch(org.apache.axis2.databinding.ADBException e){
+                            throw org.apache.axis2.AxisFault.makeFault(e);
+                        }
+                    
+
+            }
+        
+            private  org.apache.axiom.om.OMElement  toOM(org.example.www.sportcenterservice.GetSports param, boolean optimizeContent)
+            throws org.apache.axis2.AxisFault {
+
+            
+                        try{
+                             return param.getOMElement(org.example.www.sportcenterservice.GetSports.MY_QNAME,
+                                          org.apache.axiom.om.OMAbstractFactory.getOMFactory());
+                        } catch(org.apache.axis2.databinding.ADBException e){
+                            throw org.apache.axis2.AxisFault.makeFault(e);
+                        }
+                    
+
+            }
+        
+            private  org.apache.axiom.om.OMElement  toOM(org.example.www.sportcenterservice.GetSportsResponse param, boolean optimizeContent)
+            throws org.apache.axis2.AxisFault {
+
+            
+                        try{
+                             return param.getOMElement(org.example.www.sportcenterservice.GetSportsResponse.MY_QNAME,
                                           org.apache.axiom.om.OMAbstractFactory.getOMFactory());
                         } catch(org.apache.axis2.databinding.ADBException e){
                             throw org.apache.axis2.AxisFault.makeFault(e);
@@ -163,6 +257,44 @@
                                 return wrappedElement;
                          }
                     
+                    private  org.apache.axiom.soap.SOAPEnvelope toEnvelope(org.apache.axiom.soap.SOAPFactory factory, org.example.www.sportcenterservice.GetFieldsResponse param, boolean optimizeContent, javax.xml.namespace.QName methodQName)
+                        throws org.apache.axis2.AxisFault{
+                      try{
+                          org.apache.axiom.soap.SOAPEnvelope emptyEnvelope = factory.getDefaultEnvelope();
+                           
+                                    emptyEnvelope.getBody().addChild(param.getOMElement(org.example.www.sportcenterservice.GetFieldsResponse.MY_QNAME,factory));
+                                
+
+                         return emptyEnvelope;
+                    } catch(org.apache.axis2.databinding.ADBException e){
+                        throw org.apache.axis2.AxisFault.makeFault(e);
+                    }
+                    }
+                    
+                         private org.example.www.sportcenterservice.GetFieldsResponse wrapgetFields(){
+                                org.example.www.sportcenterservice.GetFieldsResponse wrappedElement = new org.example.www.sportcenterservice.GetFieldsResponse();
+                                return wrappedElement;
+                         }
+                    
+                    private  org.apache.axiom.soap.SOAPEnvelope toEnvelope(org.apache.axiom.soap.SOAPFactory factory, org.example.www.sportcenterservice.GetSportsResponse param, boolean optimizeContent, javax.xml.namespace.QName methodQName)
+                        throws org.apache.axis2.AxisFault{
+                      try{
+                          org.apache.axiom.soap.SOAPEnvelope emptyEnvelope = factory.getDefaultEnvelope();
+                           
+                                    emptyEnvelope.getBody().addChild(param.getOMElement(org.example.www.sportcenterservice.GetSportsResponse.MY_QNAME,factory));
+                                
+
+                         return emptyEnvelope;
+                    } catch(org.apache.axis2.databinding.ADBException e){
+                        throw org.apache.axis2.AxisFault.makeFault(e);
+                    }
+                    }
+                    
+                         private org.example.www.sportcenterservice.GetSportsResponse wrapgetSports(){
+                                org.example.www.sportcenterservice.GetSportsResponse wrappedElement = new org.example.www.sportcenterservice.GetSportsResponse();
+                                return wrappedElement;
+                         }
+                    
                     private  org.apache.axiom.soap.SOAPEnvelope toEnvelope(org.apache.axiom.soap.SOAPFactory factory, org.example.www.sportcenterservice.GetSportCenterResponse param, boolean optimizeContent, javax.xml.namespace.QName methodQName)
                         throws org.apache.axis2.AxisFault{
                       try{
@@ -209,6 +341,34 @@
                 if (org.example.www.sportcenterservice.GetSportCentersResponse.class.equals(type)){
                 
                            return org.example.www.sportcenterservice.GetSportCentersResponse.Factory.parse(param.getXMLStreamReaderWithoutCaching());
+                    
+
+                }
+           
+                if (org.example.www.sportcenterservice.GetFields.class.equals(type)){
+                
+                           return org.example.www.sportcenterservice.GetFields.Factory.parse(param.getXMLStreamReaderWithoutCaching());
+                    
+
+                }
+           
+                if (org.example.www.sportcenterservice.GetFieldsResponse.class.equals(type)){
+                
+                           return org.example.www.sportcenterservice.GetFieldsResponse.Factory.parse(param.getXMLStreamReaderWithoutCaching());
+                    
+
+                }
+           
+                if (org.example.www.sportcenterservice.GetSports.class.equals(type)){
+                
+                           return org.example.www.sportcenterservice.GetSports.Factory.parse(param.getXMLStreamReaderWithoutCaching());
+                    
+
+                }
+           
+                if (org.example.www.sportcenterservice.GetSportsResponse.class.equals(type)){
+                
+                           return org.example.www.sportcenterservice.GetSportsResponse.Factory.parse(param.getXMLStreamReaderWithoutCaching());
                     
 
                 }

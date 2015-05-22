@@ -10,6 +10,14 @@
             <actionMapping>http://www.example.org/SportCenterService/getSportCenters</actionMapping>
             <outputActionMapping>http://www.example.org/SportCenterService/SportCenterService/getSportCentersResponse</outputActionMapping>
         </operation>
+        <operation name="getFields" mep="http://www.w3.org/ns/wsdl/in-out" namespace="http://www.example.org/SportCenterService/">
+            <actionMapping>http://www.example.org/SportCenterService/getFields</actionMapping>
+            <outputActionMapping>http://www.example.org/SportCenterService/SportCenterService/getFieldsResponse</outputActionMapping>
+        </operation>
+        <operation name="getSports" mep="http://www.w3.org/ns/wsdl/in-out" namespace="http://www.example.org/SportCenterService/">
+            <actionMapping>http://www.example.org/SportCenterService/getSports</actionMapping>
+            <outputActionMapping>http://www.example.org/SportCenterService/SportCenterService/getSportsResponse</outputActionMapping>
+        </operation>
         <operation name="getSportCenter" mep="http://www.w3.org/ns/wsdl/in-out" namespace="http://www.example.org/SportCenterService/">
             <actionMapping>http://www.example.org/SportCenterService/getSportCenter</actionMapping>
             <outputActionMapping>http://www.example.org/SportCenterService/SportCenterService/getSportCenterResponse</outputActionMapping>

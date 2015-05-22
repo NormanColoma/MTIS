@@ -13,7 +13,16 @@ namespace CentrosDeportivos.Controllers
             return View();
         }
 
-       
+        public ActionResult Centers()
+        {
+            CentrosDeportivos.SportCenterService.SportCenterService sc = new CentrosDeportivos.SportCenterService.SportCenterService();
+            List<CentrosDeportivos.SportCenterService.SportCenter> centers = new List<CentrosDeportivos.SportCenterService.SportCenter>(sc.getSportCenters());
+            foreach (CentrosDeportivos.SportCenterService.SportCenter center in centers)
+            {
+                center.sports = sc.getSports(center.id);
+            }
+            return View(centers);
+        }
 
     }
 }

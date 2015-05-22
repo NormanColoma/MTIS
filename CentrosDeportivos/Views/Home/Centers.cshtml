@@ -1,0 +1,30 @@
+﻿@model IEnumerable<CentrosDeportivos.SportCenterService.SportCenter>
+@{
+    ViewBag.Title = "Centers";
+}
+@Styles.Render("~/Content/centers.css")
+<h2>Centros Deportivos</h2>
+<p>Estos son los centros deportivos que actualmente están asociados a la plataforma. En todos ellos podrás disfrutar de sus servicios, si eres miembro de nuestra plataforma.</p>
+<div class="centers-container">
+    <ul>
+        @foreach (var center in Model) {
+        <li>
+            <div class="center">
+                <h3 class="center-name">@center.name</h3>
+                <img src="~/Content/img/centers/@center.img" class="center-img" />
+                <div class="center-info">
+                    <p>@center.description</p>
+                    <h4>Actividades portivas</h4>
+                    <ul class="center-sports">
+                        @foreach (var sport in center.sports)
+                        {
+                            <li>@sport.name</li>
+                        }
+                    </ul>
+                </div>
+            </div>
+        </li>
+        }
+    </ul>
+</div>
+

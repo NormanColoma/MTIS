@@ -58,10 +58,59 @@
       		</xsd:sequence>
       	</xsd:complexType>
       </xsd:element>
+      <xsd:element name="getSports">
+      	<xsd:complexType>
+      		<xsd:sequence>
+
+      			<xsd:element name="id_sc" type="xsd:int"/>
+      		</xsd:sequence>
+      	</xsd:complexType>
+      </xsd:element>
+      <xsd:element name="getSportsResponse">
+      	<xsd:complexType>
+      		<xsd:sequence>
+
+      			<xsd:element maxOccurs="unbounded" minOccurs="1" name="sports" type="tns:Sport"/>
+      		</xsd:sequence>
+      	</xsd:complexType>
+      </xsd:element>
+      <xsd:element name="getFields">
+      	<xsd:complexType>
+      		<xsd:sequence>
+
+      			<xsd:element name="id_sport" type="xsd:int"/>
+      			<xsd:element name="id_sc" type="xsd:int"/>
+      		</xsd:sequence>
+      	</xsd:complexType>
+      </xsd:element>
+      <xsd:element name="getFieldsResponse">
+      	<xsd:complexType>
+      		<xsd:sequence>
+
+      			<xsd:element maxOccurs="unbounded" minOccurs="1" name="fields" type="tns:Field"/>
+      		</xsd:sequence>
+      	</xsd:complexType>
+      </xsd:element>
     </xsd:schema>
   </wsdl:types>
   <wsdl:message name="getSportCentersResponse">
     <wsdl:part name="parameters" element="tns:getSportCentersResponse">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getFieldsRequest">
+    <wsdl:part name="parameters" element="tns:getFields">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getSportsRequest">
+    <wsdl:part name="parameters" element="tns:getSports">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getSportsResponse">
+    <wsdl:part name="parameters" element="tns:getSportsResponse">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getFieldsResponse">
+    <wsdl:part name="parameters" element="tns:getFieldsResponse">
     </wsdl:part>
   </wsdl:message>
   <wsdl:message name="getSportCenterRequest">
@@ -89,6 +138,18 @@
       <wsdl:output message="tns:getSportCentersResponse">
     </wsdl:output>
     </wsdl:operation>
+    <wsdl:operation name="getSports">
+      <wsdl:input message="tns:getSportsRequest">
+    </wsdl:input>
+      <wsdl:output message="tns:getSportsResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getFields">
+      <wsdl:input message="tns:getFieldsRequest">
+    </wsdl:input>
+      <wsdl:output message="tns:getFieldsResponse">
+    </wsdl:output>
+    </wsdl:operation>
   </wsdl:portType>
   <wsdl:binding name="SportCenterServiceSOAP" type="tns:SportCenterService">
     <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
@@ -103,6 +164,24 @@
     </wsdl:operation>
     <wsdl:operation name="getSportCenters">
       <soap:operation soapAction="http://www.example.org/SportCenterService/getSportCenters"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getSports">
+      <soap:operation soapAction="http://www.example.org/SportCenterService/getSports"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getFields">
+      <soap:operation soapAction="http://www.example.org/SportCenterService/getFields"/>
       <wsdl:input>
         <soap:body use="literal"/>
       </wsdl:input>

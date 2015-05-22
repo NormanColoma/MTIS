@@ -1,0 +1,32 @@
+﻿.centers-container{
+    margin-top:40px;
+}
+
+.centers-container ul{
+    list-style:none;
+}
+
+.center{
+    margin-bottom:50px;
+    float: left;
+    width: 100%;
+}
+
+.center-img{
+    width:400px;
+    float:left;
+}
+
+.center-info{
+    margin-left:20px;
+    float: left;
+    width: 60%;
+}
+
+.center-sports{
+    list-style:initial !important;
+}
+
+.center-sports li{
+    margin-bottom:10px;
+}
