@@ -129,7 +129,7 @@ import com.mysql.jdbc.jdbc2.optional.MysqlDataSource;
 				}
             	catch (SQLException e) {
             		result.setOk(false);
-      				result.setMessage("No se ha podido borrar la reserva "+e.getMessage());
+      				result.setMessage("No se ha podido borrar la reserva: "+e.getMessage());
 				}
             	finally
             	 {

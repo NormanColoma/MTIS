@@ -21,9 +21,7 @@
       	<xsd:complexType>
       		<xsd:sequence>
 
-      			<xsd:element name="number" type="xsd:string"></xsd:element>
-      			<xsd:element name="cvs" type="xsd:string"></xsd:element>
-      			<xsd:element name="date" type="xsd:string"></xsd:element>
+      			<xsd:element name="number" type="xsd:string"></xsd:element>
       		</xsd:sequence>
       	</xsd:complexType>
       </xsd:element>
@@ -40,7 +38,7 @@
       	<xsd:complexType>
       		<xsd:sequence>
 
-      			<xsd:element name="payMethod" type="xsd:string"></xsd:element>
+      			<xsd:element name="code" type="xsd:int"></xsd:element>
       		</xsd:sequence>
       	</xsd:complexType>
       </xsd:element>
