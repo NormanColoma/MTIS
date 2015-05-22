@@ -39,96 +39,115 @@
 
             if("cancelBooking".equals(methodName)){
                 
-                org.example.www.bookingservice.CancelBookingResponse cancelBookingResponse21 = null;
+                org.example.www.bookingservice.CancelBookingResponse cancelBookingResponse25 = null;
 	                        org.example.www.bookingservice.CancelBooking wrappedParam =
                                                              (org.example.www.bookingservice.CancelBooking)fromOM(
                                     msgContext.getEnvelope().getBody().getFirstElement(),
                                     org.example.www.bookingservice.CancelBooking.class,
                                     getEnvelopeNamespaces(msgContext.getEnvelope()));
                                                 
-                                               cancelBookingResponse21 =
+                                               cancelBookingResponse25 =
                                                    
                                                    
                                                          skel.cancelBooking(wrappedParam)
                                                     ;
                                             
-                                        envelope = toEnvelope(getSOAPFactory(msgContext), cancelBookingResponse21, false, new javax.xml.namespace.QName("http://www.example.org/BookingService/",
+                                        envelope = toEnvelope(getSOAPFactory(msgContext), cancelBookingResponse25, false, new javax.xml.namespace.QName("http://www.example.org/BookingService/",
                                                     "cancelBooking"));
                                     } else 
 
             if("validateBooking".equals(methodName)){
                 
-                org.example.www.bookingservice.ValidateBookingResponse validateBookingResponse23 = null;
+                org.example.www.bookingservice.ValidateBookingResponse validateBookingResponse27 = null;
 	                        org.example.www.bookingservice.ValidateBooking wrappedParam =
                                                              (org.example.www.bookingservice.ValidateBooking)fromOM(
                                     msgContext.getEnvelope().getBody().getFirstElement(),
                                     org.example.www.bookingservice.ValidateBooking.class,
                                     getEnvelopeNamespaces(msgContext.getEnvelope()));
                                                 
-                                               validateBookingResponse23 =
+                                               validateBookingResponse27 =
                                                    
                                                    
                                                          skel.validateBooking(wrappedParam)
                                                     ;
                                             
-                                        envelope = toEnvelope(getSOAPFactory(msgContext), validateBookingResponse23, false, new javax.xml.namespace.QName("http://www.example.org/BookingService/",
+                                        envelope = toEnvelope(getSOAPFactory(msgContext), validateBookingResponse27, false, new javax.xml.namespace.QName("http://www.example.org/BookingService/",
                                                     "validateBooking"));
                                     } else 
 
             if("getFields".equals(methodName)){
                 
-                org.example.www.bookingservice.GetFieldsResponse getFieldsResponse25 = null;
+                org.example.www.bookingservice.GetFieldsResponse getFieldsResponse29 = null;
 	                        org.example.www.bookingservice.GetFields wrappedParam =
                                                              (org.example.www.bookingservice.GetFields)fromOM(
                                     msgContext.getEnvelope().getBody().getFirstElement(),
                                     org.example.www.bookingservice.GetFields.class,
                                     getEnvelopeNamespaces(msgContext.getEnvelope()));
                                                 
-                                               getFieldsResponse25 =
+                                               getFieldsResponse29 =
                                                    
                                                    
                                                          skel.getFields(wrappedParam)
                                                     ;
                                             
-                                        envelope = toEnvelope(getSOAPFactory(msgContext), getFieldsResponse25, false, new javax.xml.namespace.QName("http://www.example.org/BookingService/",
+                                        envelope = toEnvelope(getSOAPFactory(msgContext), getFieldsResponse29, false, new javax.xml.namespace.QName("http://www.example.org/BookingService/",
                                                     "getFields"));
+                                    } else 
+
+            if("getBookings".equals(methodName)){
+                
+                org.example.www.bookingservice.GetBookingsResponse getBookingsResponse31 = null;
+	                        org.example.www.bookingservice.GetBookings wrappedParam =
+                                                             (org.example.www.bookingservice.GetBookings)fromOM(
+                                    msgContext.getEnvelope().getBody().getFirstElement(),
+                                    org.example.www.bookingservice.GetBookings.class,
+                                    getEnvelopeNamespaces(msgContext.getEnvelope()));
+                                                
+                                               getBookingsResponse31 =
+                                                   
+                                                   
+                                                         skel.getBookings(wrappedParam)
+                                                    ;
+                                            
+                                        envelope = toEnvelope(getSOAPFactory(msgContext), getBookingsResponse31, false, new javax.xml.namespace.QName("http://www.example.org/BookingService/",
+                                                    "getBookings"));
                                     } else 
 
             if("createBooking".equals(methodName)){
                 
-                org.example.www.bookingservice.CreateBookingResponse createBookingResponse27 = null;
+                org.example.www.bookingservice.CreateBookingResponse createBookingResponse33 = null;
 	                        org.example.www.bookingservice.CreateBooking wrappedParam =
                                                              (org.example.www.bookingservice.CreateBooking)fromOM(
                                     msgContext.getEnvelope().getBody().getFirstElement(),
                                     org.example.www.bookingservice.CreateBooking.class,
                                     getEnvelopeNamespaces(msgContext.getEnvelope()));
                                                 
-                                               createBookingResponse27 =
+                                               createBookingResponse33 =
                                                    
                                                    
                                                          skel.createBooking(wrappedParam)
                                                     ;
                                             
-                                        envelope = toEnvelope(getSOAPFactory(msgContext), createBookingResponse27, false, new javax.xml.namespace.QName("http://www.example.org/BookingService/",
+                                        envelope = toEnvelope(getSOAPFactory(msgContext), createBookingResponse33, false, new javax.xml.namespace.QName("http://www.example.org/BookingService/",
                                                     "createBooking"));
                                     } else 
 
             if("getBooking".equals(methodName)){
                 
-                org.example.www.bookingservice.GetBookingResponse getBookingResponse29 = null;
+                org.example.www.bookingservice.GetBookingResponse getBookingResponse35 = null;
 	                        org.example.www.bookingservice.GetBooking wrappedParam =
                                                              (org.example.www.bookingservice.GetBooking)fromOM(
                                     msgContext.getEnvelope().getBody().getFirstElement(),
                                     org.example.www.bookingservice.GetBooking.class,
                                     getEnvelopeNamespaces(msgContext.getEnvelope()));
                                                 
-                                               getBookingResponse29 =
+                                               getBookingResponse35 =
                                                    
                                                    
                                                          skel.getBooking(wrappedParam)
                                                     ;
                                             
-                                        envelope = toEnvelope(getSOAPFactory(msgContext), getBookingResponse29, false, new javax.xml.namespace.QName("http://www.example.org/BookingService/",
+                                        envelope = toEnvelope(getSOAPFactory(msgContext), getBookingResponse35, false, new javax.xml.namespace.QName("http://www.example.org/BookingService/",
                                                     "getBooking"));
                                     
             } else {
@@ -221,6 +240,34 @@
             
                         try{
                              return param.getOMElement(org.example.www.bookingservice.GetFieldsResponse.MY_QNAME,
+                                          org.apache.axiom.om.OMAbstractFactory.getOMFactory());
+                        } catch(org.apache.axis2.databinding.ADBException e){
+                            throw org.apache.axis2.AxisFault.makeFault(e);
+                        }
+                    
+
+            }
+        
+            private  org.apache.axiom.om.OMElement  toOM(org.example.www.bookingservice.GetBookings param, boolean optimizeContent)
+            throws org.apache.axis2.AxisFault {
+
+            
+                        try{
+                             return param.getOMElement(org.example.www.bookingservice.GetBookings.MY_QNAME,
+                                          org.apache.axiom.om.OMAbstractFactory.getOMFactory());
+                        } catch(org.apache.axis2.databinding.ADBException e){
+                            throw org.apache.axis2.AxisFault.makeFault(e);
+                        }
+                    
+
+            }
+        
+            private  org.apache.axiom.om.OMElement  toOM(org.example.www.bookingservice.GetBookingsResponse param, boolean optimizeContent)
+            throws org.apache.axis2.AxisFault {
+
+            
+                        try{
+                             return param.getOMElement(org.example.www.bookingservice.GetBookingsResponse.MY_QNAME,
                                           org.apache.axiom.om.OMAbstractFactory.getOMFactory());
                         } catch(org.apache.axis2.databinding.ADBException e){
                             throw org.apache.axis2.AxisFault.makeFault(e);
@@ -342,6 +389,25 @@
                                 return wrappedElement;
                          }
                     
+                    private  org.apache.axiom.soap.SOAPEnvelope toEnvelope(org.apache.axiom.soap.SOAPFactory factory, org.example.www.bookingservice.GetBookingsResponse param, boolean optimizeContent, javax.xml.namespace.QName methodQName)
+                        throws org.apache.axis2.AxisFault{
+                      try{
+                          org.apache.axiom.soap.SOAPEnvelope emptyEnvelope = factory.getDefaultEnvelope();
+                           
+                                    emptyEnvelope.getBody().addChild(param.getOMElement(org.example.www.bookingservice.GetBookingsResponse.MY_QNAME,factory));
+                                
+
+                         return emptyEnvelope;
+                    } catch(org.apache.axis2.databinding.ADBException e){
+                        throw org.apache.axis2.AxisFault.makeFault(e);
+                    }
+                    }
+                    
+                         private org.example.www.bookingservice.GetBookingsResponse wrapgetBookings(){
+                                org.example.www.bookingservice.GetBookingsResponse wrappedElement = new org.example.www.bookingservice.GetBookingsResponse();
+                                return wrappedElement;
+                         }
+                    
                     private  org.apache.axiom.soap.SOAPEnvelope toEnvelope(org.apache.axiom.soap.SOAPFactory factory, org.example.www.bookingservice.CreateBookingResponse param, boolean optimizeContent, javax.xml.namespace.QName methodQName)
                         throws org.apache.axis2.AxisFault{
                       try{
@@ -435,6 +501,20 @@
                 if (org.example.www.bookingservice.GetFieldsResponse.class.equals(type)){
                 
                            return org.example.www.bookingservice.GetFieldsResponse.Factory.parse(param.getXMLStreamReaderWithoutCaching());
+                    
+
+                }
+           
+                if (org.example.www.bookingservice.GetBookings.class.equals(type)){
+                
+                           return org.example.www.bookingservice.GetBookings.Factory.parse(param.getXMLStreamReaderWithoutCaching());
+                    
+
+                }
+           
+                if (org.example.www.bookingservice.GetBookingsResponse.class.equals(type)){
+                
+                           return org.example.www.bookingservice.GetBookingsResponse.Factory.parse(param.getXMLStreamReaderWithoutCaching());
                     
 
                 }

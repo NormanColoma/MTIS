@@ -18,6 +18,10 @@
             <actionMapping>http://www.example.org/BookingService/getFields</actionMapping>
             <outputActionMapping>http://www.example.org/BookingService/BookingService/getFieldsResponse</outputActionMapping>
         </operation>
+        <operation name="getBookings" mep="http://www.w3.org/ns/wsdl/in-out" namespace="http://www.example.org/BookingService/">
+            <actionMapping>http://www.example.org/BookingService/getBookings</actionMapping>
+            <outputActionMapping>http://www.example.org/BookingService/BookingService/getBookingsResponse</outputActionMapping>
+        </operation>
         <operation name="createBooking" mep="http://www.w3.org/ns/wsdl/in-out" namespace="http://www.example.org/BookingService/">
             <actionMapping>http://www.example.org/BookingService/createBooking</actionMapping>
             <outputActionMapping>http://www.example.org/BookingService/BookingService/createBookingResponse</outputActionMapping>

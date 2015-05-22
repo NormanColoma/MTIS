@@ -1,22 +1,34 @@
 <?xml version="1.0" encoding="UTF-8"?><!-- This file was auto-generated from WSDL --><!-- by the Apache Axis2 version: 1.6.2  Built on : Apr 17, 2012 (05:33:49 IST) --><serviceGroup>
-    <service name="PayMethodsService">
+    <service name="BookingService">
         <messageReceivers>
-            <messageReceiver mep="http://www.w3.org/ns/wsdl/in-out" class="org.example.www.paymethodsservice.PayMethodsServiceMessageReceiverInOut"/>
+            <messageReceiver mep="http://www.w3.org/ns/wsdl/in-out" class="org.example.www.bookingservice.BookingServiceMessageReceiverInOut"/>
         </messageReceivers>
-        <parameter name="ServiceClass">org.example.www.paymethodsservice.PayMethodsServiceSkeleton</parameter>
+        <parameter name="ServiceClass">org.example.www.bookingservice.BookingServiceSkeleton</parameter>
         <parameter name="useOriginalwsdl">true</parameter>
         <parameter name="modifyUserWSDLPortAddress">true</parameter>
-        <operation name="validateMethod" mep="http://www.w3.org/ns/wsdl/in-out" namespace="http://www.example.org/PayMethodsService/">
-            <actionMapping>http://www.example.org/PayMethodsService/validateMethod</actionMapping>
-            <outputActionMapping>http://www.example.org/PayMethodsService/PayMethodsService/validateMethodResponse</outputActionMapping>
+        <operation name="cancelBooking" mep="http://www.w3.org/ns/wsdl/in-out" namespace="http://www.example.org/BookingService/">
+            <actionMapping>http://www.example.org/BookingService/cancelBooking</actionMapping>
+            <outputActionMapping>http://www.example.org/BookingService/BookingService/cancelBookingResponse</outputActionMapping>
         </operation>
-        <operation name="validateIBAN" mep="http://www.w3.org/ns/wsdl/in-out" namespace="http://www.example.org/PayMethodsService/">
-            <actionMapping>http://www.example.org/PayMethodsService/validateIBAN</actionMapping>
-            <outputActionMapping>http://www.example.org/PayMethodsService/PayMethodsService/validateIBANResponse</outputActionMapping>
+        <operation name="validateBooking" mep="http://www.w3.org/ns/wsdl/in-out" namespace="http://www.example.org/BookingService/">
+            <actionMapping>http://www.example.org/BookingService/validateBooking</actionMapping>
+            <outputActionMapping>http://www.example.org/BookingService/BookingService/validateBookingResponse</outputActionMapping>
         </operation>
-        <operation name="validateCreditCard" mep="http://www.w3.org/ns/wsdl/in-out" namespace="http://www.example.org/PayMethodsService/">
-            <actionMapping>http://www.example.org/PayMethodsService/validateCreditCard</actionMapping>
-            <outputActionMapping>http://www.example.org/PayMethodsService/PayMethodsService/validateCreditCardResponse</outputActionMapping>
+        <operation name="getFields" mep="http://www.w3.org/ns/wsdl/in-out" namespace="http://www.example.org/BookingService/">
+            <actionMapping>http://www.example.org/BookingService/getFields</actionMapping>
+            <outputActionMapping>http://www.example.org/BookingService/BookingService/getFieldsResponse</outputActionMapping>
+        </operation>
+        <operation name="getBookings" mep="http://www.w3.org/ns/wsdl/in-out" namespace="http://www.example.org/BookingService/">
+            <actionMapping>http://www.example.org/BookingService/getBookings</actionMapping>
+            <outputActionMapping>http://www.example.org/BookingService/BookingService/getBookingsResponse</outputActionMapping>
+        </operation>
+        <operation name="createBooking" mep="http://www.w3.org/ns/wsdl/in-out" namespace="http://www.example.org/BookingService/">
+            <actionMapping>http://www.example.org/BookingService/createBooking</actionMapping>
+            <outputActionMapping>http://www.example.org/BookingService/BookingService/createBookingResponse</outputActionMapping>
+        </operation>
+        <operation name="getBooking" mep="http://www.w3.org/ns/wsdl/in-out" namespace="http://www.example.org/BookingService/">
+            <actionMapping>http://www.example.org/BookingService/getBooking</actionMapping>
+            <outputActionMapping>http://www.example.org/BookingService/BookingService/getBookingResponse</outputActionMapping>
         </operation>
     </service>
 </serviceGroup>

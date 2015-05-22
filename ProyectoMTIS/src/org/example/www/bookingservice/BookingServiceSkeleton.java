@@ -174,10 +174,10 @@ import com.mysql.jdbc.jdbc2.optional.MysqlDataSource;
           			resultSet2.next();
       				Field[] fields = new Field[resultSet2.getInt(1)];
       				ResultSet resultSet = statement.executeQuery(query);
-          			Field field = new Field();
           			
           			for(int i=0;resultSet.next();i++)
           			{
+          				Field field = new Field();
           				field.setName(resultSet.getString("field.name"));
           				field.setStartDate(resultSet.getString("startDate"));
           				field.setEndDate(resultSet.getString("endDate"));
@@ -324,5 +324,67 @@ import com.mysql.jdbc.jdbc2.optional.MysqlDataSource;
                 
                 return(result);
         }
+                 
+                 /**
+                  * Auto generated method signature
+                  * 
+                                              * @param getBookings 
+                      * @return getBookingsResponse 
+                  */
+                 
+                      public org.example.www.bookingservice.GetBookingsResponse getBookings
+                       (
+                       org.example.www.bookingservice.GetBookings getBookings
+                       )
+                 {
+                     GetBookingsResponse result = new GetBookingsResponse();
+                     
+                     try {
+     					conectarDB();
+     					statement = connect.createStatement();
+     					String query = "select * from Boocking where userNumber="+getBookings.getUserNumber();
+     					String query2 = "select count(*) from Boocking where userNumber="+getBookings.getUserNumber();
+
+               			ResultSet resultSet2 = statement.executeQuery(query2);
+               			resultSet2.next();
+           				Booking[] books = new Booking[resultSet2.getInt(1)];
+           				ResultSet resultSet = statement.executeQuery(query);
+               			
+               			for(int i=0;resultSet.next();i++)
+               			{
+               				Booking book = new Booking();
+               				book.setCode(resultSet.getInt("code"));
+               				book.setDate(resultSet.getString("date"));
+               				book.setIdField(resultSet.getInt("idField"));
+               				book.setPayMethodSelected(resultSet.getString("payMethodSelect"));
+               				book.setSport(resultSet.getString("sport"));
+               				book.setTotal(resultSet.getFloat("total"));
+               				book.setUserNumber(resultSet.getString("userNumber"));
+               				books[i] = book;
+               			}
+               			result.setBooks(books);
+     				} catch (NamingException e) {
+     					System.out.println("No se ha podido obtener los campos: "+e.getMessage());
+     				}
+                 	catch (SQLException e) {
+                 		System.out.println("No se ha podido obtener los campos: "+e.getMessage());
+     				}
+                 	finally
+                 	 {
+                     	try
+                 		{
+                 			connect.close();
+                 			statement.close();
+                 		}
+                 		catch(SQLException e)
+                 		{
+                 			e.printStackTrace();
+                 		}
+                 	 }
+                     
+                     return(result);
+             }
      
     } 
+        
+       

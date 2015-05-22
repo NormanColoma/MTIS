@@ -145,6 +145,22 @@
       		</xsd:sequence>
       	</xsd:complexType>
       </xsd:element>
+      <xsd:element name="getBookings">
+      	<xsd:complexType>
+      		<xsd:sequence>
+
+      			<xsd:element name="userNumber" type="xsd:int"/>
+      		</xsd:sequence>
+      	</xsd:complexType>
+      </xsd:element>
+      <xsd:element name="getBookingsResponse">
+      	<xsd:complexType>
+      		<xsd:sequence>
+
+      			<xsd:element maxOccurs="unbounded" minOccurs="0" name="books" type="tns:Booking"/>
+      		</xsd:sequence>
+      	</xsd:complexType>
+      </xsd:element>
     </xsd:schema>
   </wsdl:types>
   <wsdl:message name="sendBookingResponse">
@@ -161,6 +177,10 @@
   </wsdl:message>
   <wsdl:message name="validateMethodRequest">
     <wsdl:part name="parameters" element="tns:validateMethod">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getBookingsResponse">
+    <wsdl:part name="parameters" element="tns:getBookingsResponse">
     </wsdl:part>
   </wsdl:message>
   <wsdl:message name="sendBookingRequest">
@@ -193,6 +213,10 @@
   </wsdl:message>
   <wsdl:message name="getFieldsRequest">
     <wsdl:part name="parameters" element="tns:getFields">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getBookingsRequest">
+    <wsdl:part name="parameters" element="tns:getBookings">
     </wsdl:part>
   </wsdl:message>
   <wsdl:message name="createBookingRequest">
@@ -232,6 +256,12 @@
       <wsdl:input message="tns:getFieldsRequest">
     </wsdl:input>
       <wsdl:output message="tns:getFieldsResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getBookings">
+      <wsdl:input message="tns:getBookingsRequest">
+    </wsdl:input>
+      <wsdl:output message="tns:getBookingsResponse">
     </wsdl:output>
     </wsdl:operation>
   </wsdl:portType>
@@ -275,6 +305,15 @@
     </wsdl:operation>
     <wsdl:operation name="getFields">
       <soap:operation soapAction="http://www.example.org/BookingService/getFields"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getBookings">
+      <soap:operation soapAction="http://www.example.org/BookingService/getBookings"/>
       <wsdl:input>
         <soap:body use="literal"/>
       </wsdl:input>
