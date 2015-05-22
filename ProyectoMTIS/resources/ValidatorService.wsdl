@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wsdl:definitions name="ValidatorService" targetNamespace="http://www.example.org/ValidatorService/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:tns="http://www.example.org/ValidatorService/" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/">
+  <wsdl:types>
+    <xsd:schema targetNamespace="http://www.example.org/ValidatorService/">
+      <xsd:element name="validateNIF">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="NIF" type="xsd:string"/>
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="validateNIFResponse">
+        <xsd:complexType>
+          <xsd:sequence>
+          	<xsd:element name="valid" type="xsd:boolean"/>
+          	<xsd:element name="message" type="xsd:string"/>
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="validateMemberCode">
+      	<xsd:complexType>
+      		<xsd:sequence>
+
+      			<xsd:element name="code" type="xsd:int"/>
+      		</xsd:sequence>
+      	</xsd:complexType>
+      </xsd:element>
+      <xsd:element name="validateMemberCodeResponse">
+      	<xsd:complexType>
+      		<xsd:sequence>
+
+      			<xsd:element name="valid" type="xsd:boolean"/>
+      			<xsd:element name="message" type="xsd:string"/>
+      		</xsd:sequence>
+      	</xsd:complexType>
+      </xsd:element>
+    </xsd:schema>
+  </wsdl:types>
+  <wsdl:message name="validateMemberCodeResponse">
+    <wsdl:part name="parameters" element="tns:validateMemberCodeResponse">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="validateMemberCodeRequest">
+    <wsdl:part name="parameters" element="tns:validateMemberCode">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="validateNIFRequest">
+    <wsdl:part name="parameters" element="tns:validateNIF">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="validateNIFResponse">
+    <wsdl:part name="parameters" element="tns:validateNIFResponse">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:portType name="ValidatorService">
+    <wsdl:operation name="validateNIF">
+      <wsdl:input message="tns:validateNIFRequest">
+    </wsdl:input>
+      <wsdl:output message="tns:validateNIFResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="validateMemberCode">
+      <wsdl:input message="tns:validateMemberCodeRequest">
+    </wsdl:input>
+      <wsdl:output message="tns:validateMemberCodeResponse">
+    </wsdl:output>
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="ValidatorServiceSOAP" type="tns:ValidatorService">
+    <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+    <wsdl:operation name="validateNIF">
+      <soap:operation soapAction="http://www.example.org/ValidatorService/validateNIF"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="validateMemberCode">
+      <soap:operation soapAction="http://www.example.org/ValidatorService/validateMemberCode"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="ValidatorService">
+    <wsdl:port name="ValidatorServiceSOAP" binding="tns:ValidatorServiceSOAP">
+      <soap:address location="http://localhost:9080/ProyectoMTIS/services/ValidatorService"/>
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>
