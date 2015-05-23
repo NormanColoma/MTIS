@@ -11,7 +11,7 @@
 
 function getSports(center) {
     var port = location.port; //Obtenemos el puerto
-    var uri = "http://localhost:" + port + "/api/SportCenter/"+center; //Dirección del servicio REST
+    var uri = "http://localhost:" + port + "/api/SportCenter/getSports/"+center; //Dirección del servicio REST
     $.getJSON(uri) //Hacemos petición GET al servicio
         .done(function (data) {
             var sports = data;  //Obtenemos los datos
