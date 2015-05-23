@@ -17,8 +17,6 @@ namespace CentrosDeportivos.Models
         [Display(Name = "¿Recordar cuenta?")]
         public bool RememberMe { get; set; }
     }
-
-
     public class RegisterViewModel
     {
         [Required]
@@ -70,5 +68,9 @@ namespace CentrosDeportivos.Models
         [EmailAddress]
         [Display(Name = "Correo electrónico")]
         public string Email { get; set; }
+
+        [RegularExpression("^(([A-Z]\\d{8})|(\\d{8}[A-Z]))$", ErrorMessage = "DNI incorrecto")]
+        [Display(Name = "Ingrese su DNI")]
+        public string DNI { get; set; }
     }
 }
