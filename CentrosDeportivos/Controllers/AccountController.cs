@@ -62,6 +62,14 @@ namespace CentrosDeportivos.Controllers
             return View(model);
         }
 
+        public ActionResult LogOff()
+        {
+            IOwinContext owinContext = HttpContext.GetOwinContext();
+            IAuthenticationManager authenticationManager = owinContext.Authentication;
+            authenticationManager.SignOut();
+            return RedirectToAction("Index", "Home");
+        }
+
        
 	}
 }
