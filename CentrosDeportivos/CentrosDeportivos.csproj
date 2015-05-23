@@ -199,6 +199,7 @@
     <Content Include="Content\img\centers\centro2.jpg" />
     <Content Include="Content\img\centers\centro3.jpg" />
     <Content Include="Content\login.css" />
+    <Content Include="Content\register.css" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
