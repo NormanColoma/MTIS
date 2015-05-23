@@ -1,6 +1,11 @@
-﻿using System;
+﻿using CentrosDeportivos.Models;
+using Microsoft.AspNet.Identity;
+using Microsoft.Owin;
+using Microsoft.Owin.Security;
+using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Claims;
 using System.Web;
 using System.Web.Mvc;
 
@@ -15,6 +20,11 @@ namespace CentrosDeportivos.Controllers
             return View();
         }
 
+        public ActionResult Login()
+        {
+            return View();
+        }
+
         // POST: /Account/Login
         [HttpPost]
         [AllowAnonymous]
@@ -23,9 +33,9 @@ namespace CentrosDeportivos.Controllers
         {
             if (ModelState.IsValid)
             {
-                User u = new User(model.Email, model.Password);
-                var user = userModel.login(u);
-                if (user != false)
+                CentrosDeportivos.MembershipService.MembershipService mService = new MembershipService.MembershipService();
+                bool user = mService.validateMember(model.Email, model.Password);
+                if (user)
                 {
                     var identity = new ClaimsIdentity(new[] {
                             new Claim(ClaimTypes.Name, model.Email),
