@@ -1,4 +1,4 @@
-﻿
+﻿@model IEnumerable<CentrosDeportivos.SportCenterService.SportCenter>
 @{
     ViewBag.Title = "Realizar reserva";
 }
@@ -8,13 +8,17 @@
 <div class="booking-container">
     <div class="form-group">
         <label>Centro Deportivo</label>
-        <select class="form-control">
+        <select class="form-control" id="centers">
             <option>Seleccione el centro</option>
+            @foreach (var center in Model)
+            {
+                <option value="@center.id">@center.name</option>
+            }
         </select>
     </div>
     <div class="form-group">
         <label>Deporte</label>
-        <select class="form-control">
+        <select class="form-control" id="sports">
             <option>Seleccione el deporte</option>
         </select>
     </div>
@@ -27,4 +31,7 @@
     </div>
     <input type="button" class="btn btn-primary" value="Realizar reserva" />
 </div>
+@section Scripts {
+    @Scripts.Render("~/Scripts/Booking.js")
+}
 
