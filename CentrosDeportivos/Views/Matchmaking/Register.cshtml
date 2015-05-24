@@ -1,0 +1,63 @@
+﻿@model IEnumerable<CentrosDeportivos.SportCenterService.SportCenter>
+@{
+    ViewBag.Title = "Register";
+}
+@Styles.Render("~/Content/register-macthmaking.css")
+<h2>Registar equipo en Matchmaking</h2>
+<p>Desde aquí podrás registrar tu equipo en el generador de encuentros automáticos (Matchmaking). Realiza los siguientes pasos: </p>
+<div class="matchmaking-container">
+    <ul>
+        <li><p>1) Intoduce el NIF del creador del grupo</p></li>
+        <li><p>2) Selecciona la hora a la que desearías jugar el partido, los días disponibles, y el centro deportivo</p></li>
+        <li><p>3) Entra en bolsa, y espera rival</p></li>
+        <li><p>4) Cuando un rival te seleccione, el partido se generará automáticamente</p></li>
+        <li><p>5) Se os notificará la hora y la pista asignada por e-mail</p></li>
+    </ul>
+    <div class="form-group">
+        <label>NIF (Creador grupo)</label>
+        <input type="text" class="form-control" />
+        <p hidden="hidden" class="text-danger nif-required">El NIF es obligatorio</p>
+    </div>
+    <div class="form-group">
+        <label>Centro Deportivo</label>
+        <select class="form-control" id="centers">
+            <option>Seleccione el centro</option>
+            @foreach (var center in Model)
+            {
+                <option value="@center.id">@center.name</option>
+            }
+        </select>
+    </div>
+    <div class="form-group booking-date-container">
+        <label class="booking-date-label">Fecha de la posible reserva</label>
+        <select class="form-control booking-time">
+            <option>Seleccione la hora</option>
+            <option>De 9-10</option>
+            <option>De 10-11</option>
+            <option>De 11-12</option>
+            <option>De 12-13</option>
+            <option>De 13-14</option>
+            <option>De 14-15</option>
+            <option>De 15-16</option>
+            <option>De 16-17</option>
+            <option>De 17-18</option>
+            <option>De 18-19</option>
+            <option>De 19-20</option>
+            <option>De 20-21</option>
+        </select>
+        <p hidden="hidden" class="text-danger hour-required"></p>
+        <ul class="days-list">
+            <li><label>Lunes</label><input type="checkbox" /></li>
+            <li><label>Martes</label><input type="checkbox" /></li>
+            <li><label>Miercoles</label><input type="checkbox" /></li>
+            <li><label>Jueves</label><input type="checkbox" /></li>
+            <li><label>Viernes</label><input type="checkbox" /></li>
+        </ul>
+        <p hidden="hidden" class="text-danger day-required"></p>
+    </div>
+    <div class="btn-matchmaking-container">
+        <input type="submit" class="btn btn-primary btn-matchmaking" value="Entrar en bolsa" />
+    </div>
+</div>
+
+
