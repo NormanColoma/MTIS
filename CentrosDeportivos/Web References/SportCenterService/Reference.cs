@@ -368,6 +368,8 @@ namespace CentrosDeportivos.SportCenterService {
         
         private string nameField;
         
+        private string imgField;
+        
         /// <comentarios/>
         [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
         public int id {
@@ -409,6 +411,17 @@ namespace CentrosDeportivos.SportCenterService {
             }
             set {
                 this.nameField = value;
+            }
+        }
+        
+        /// <comentarios/>
+        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
+        public string img {
+            get {
+                return this.imgField;
+            }
+            set {
+                this.imgField = value;
             }
         }
     }

@@ -32,6 +32,7 @@
           <xsd:element name="id_sc" type="xsd:int" />
           <xsd:element name="id_sport" type="xsd:int" />
           <xsd:element name="name" type="xsd:string" />
+          <xsd:element name="img" type="xsd:string" />
         </xsd:sequence>
       </xsd:complexType>
       <xsd:complexType name="Sport">
