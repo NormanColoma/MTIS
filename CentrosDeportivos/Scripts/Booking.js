@@ -86,8 +86,9 @@ function checkAvailability(idsportprov, idscprov, fecha) {
 function addFields(fields) {
     //TODO-Aquí tienes que añadir al select de campos disponibles los campos disponibles tras la consumición del servicio
     for (var i = 0; i < fields.length; i++) {
-        var field = '<div class="row"><div class="col-md-2"><img src="~/Content/img/fields/' + fields[i].imgField + '" class="center-img" /></div><div class="col-md-6">' + fields[i].nameField
-            + '</div><div class="col-md-2"><input type="button" id="confirmbooking'+fields[i].idField+'" class="btn btn-info" value="Reservar pista" /></div></div>';
+        var field = '<div class="field-container"><div class="field">' + '<img src="/Content/img/fields/' + fields[i].imgField +
+        '" class="center-img" /><div class="book-field" id="' + fields[i].idField + '"><span>' + fields[i].nameField +
+        '</span></div></div><a>Reserva la pista ya</a></div>';
         $('#showfields').append(field);
     }
 }
