@@ -79,16 +79,17 @@ namespace CentrosDeportivos.Controllers
             {
                 CentrosDeportivos.MembershipService.MembershipService mService = new MembershipService.MembershipService();
                 CentrosDeportivos.MembershipService.Member miembro= new MembershipService.Member();
-               
-                
+
+
+                miembro.code = "";
+                miembro.email = model.Email;
                 miembro.name = model.Name;
-                miembro.NIF = model.DNI;
-                miembro.email = "mtis@ejemplo.com";
                 miembro.password = model.Password;
-                miembro.VIP = false;
                 miembro.surname = "";
+                miembro.NIF = model.DNI;
                 miembro.Province = "";
                 miembro.City = "";
+                miembro.VIP = false;
                 bool res;
                 string message;
                 message = mService.registerMember(miembro, out res);
