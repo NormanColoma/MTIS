@@ -100,7 +100,7 @@ namespace CentrosDeportivos.Controllers
                 }
                 else
                 {
-                    ModelState.AddModelError("", "Registro incorrecto");
+                    ModelState.AddModelError("", "Registro incorrecto. " + message);
                 }
             }
 
