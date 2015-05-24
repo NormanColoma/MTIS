@@ -1,5 +1,4 @@
-﻿
-@{
+﻿@{
     ViewBag.Title = "Search";
 }
 
@@ -13,4 +12,5 @@
         </select>
     </div>
     <input type="button" class="btn btn-primary" value="Buscar rivales" />
+    @Html.ActionLink("Registrar equipo en Matchmaking", "Register", "Matchmaking", new { area = "" }, new { @class = "default-link" })
 </div>

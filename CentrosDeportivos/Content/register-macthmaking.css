@@ -1,0 +1,48 @@
+﻿.matchmaking-container{
+
+}
+
+.matchmaking-container ul{
+    list-style:none;
+    margin-bottom:20px;
+}
+
+.booking-date, .booking-time{
+    float:left;
+    margin-right:10px;
+}
+
+.booking-date-label{
+  float: left;
+  width: 100%;
+}
+
+.booking-date-container{
+    float:left;
+    width:100%;
+}
+
+.form-group{
+    margin-bottom:30px;
+}
+
+
+.days-list{
+  float: left;
+  width: 100%;
+  padding: 0;
+  margin-top: 20px;
+}
+.days-list li{
+    float:left;
+    margin-right: 20px;
+}
+
+.days-list li label{
+    float:left;
+}
+.days-list li input[type=checkbox]{
+  margin-top: 3px;
+  float: left;
+  margin-left: 3px;
+}
