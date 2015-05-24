@@ -1,4 +1,5 @@
-﻿using System;
+﻿using CentrosDeportivos.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -11,7 +12,9 @@ namespace CentrosDeportivos.Controllers
         // GET: Booking
         public ActionResult Create()
         {
-            return View();
+            CentrosDeportivos.SportCenterService.SportCenterService sc = new CentrosDeportivos.SportCenterService.SportCenterService();
+            List<CentrosDeportivos.SportCenterService.SportCenter> centers = new List<CentrosDeportivos.SportCenterService.SportCenter>(sc.getSportCenters());
+            return View(centers);
         }
     }
 }

@@ -80,7 +80,7 @@ namespace CentrosDeportivos.Controllers
                 CentrosDeportivos.MembershipService.MembershipService mService = new MembershipService.MembershipService();
                 CentrosDeportivos.MembershipService.Member miembro= new MembershipService.Member();
                
-                
+             
                 miembro.name = model.Name;
                 miembro.NIF = model.DNI;
                 miembro.email = "mtis@ejemplo.com";
