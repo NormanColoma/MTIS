@@ -70,6 +70,42 @@ namespace CentrosDeportivos.Controllers
             return RedirectToAction("Index", "Home");
         }
 
+        [HttpPost]
+        [AllowAnonymous]
+        [ValidateAntiForgeryToken]
+        public ActionResult Register(RegisterViewModel model, string returnUrl)
+        {
+            if (ModelState.IsValid)
+            {
+                CentrosDeportivos.MembershipService.MembershipService mService = new MembershipService.MembershipService();
+                CentrosDeportivos.MembershipService.Member miembro= new MembershipService.Member();
+               
+                
+                miembro.name = model.Name;
+                miembro.NIF = model.DNI;
+                miembro.email = "mtis@ejemplo.com";
+                miembro.password = model.Password;
+                miembro.VIP = false;
+                miembro.surname = "";
+                miembro.Province = "";
+                miembro.City = "";
+                bool res;
+                string message;
+                message = mService.registerMember(miembro, out res);
+                if (res)
+                {
+                    
+                    return RedirectToAction("index", "home");
+                }
+                else
+                {
+                    ModelState.AddModelError("", "Registro incorrecto");
+                }
+            }
+
+            // Si llegamos a este punto, es que se ha producido un error y volvemos a mostrar el formulario
+            return View(model);
+        }
        
 	}
 }
