@@ -249,10 +249,10 @@
     <Content Include="Web References\SportCenterService\Field.datasource">
       <DependentUpon>Reference.map</DependentUpon>
     </Content>
-    <Content Include="Web References\SportCenterService\Reference.map">
+    <None Include="Web References\SportCenterService\Reference.map">
       <Generator>MSDiscoCodeGenerator</Generator>
       <LastGenOutput>Reference.cs</LastGenOutput>
-    </Content>
+    </None>
     <Content Include="Web References\SportCenterService\Sport.datasource">
       <DependentUpon>Reference.map</DependentUpon>
     </Content>
