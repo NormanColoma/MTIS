@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?><!-- This file was auto-generated from WSDL --><!-- by the Apache Axis2 version: 1.6.2  Built on : Apr 17, 2012 (05:33:49 IST) --><serviceGroup>
+    <service name="MatchMakingNotificacionService">
+        <messageReceivers>
+            <messageReceiver mep="http://www.w3.org/ns/wsdl/in-out" class="org.example.www.matchmakingnotificacionservice.MatchMakingNotificacionServiceMessageReceiverInOut"/>
+        </messageReceivers>
+        <parameter name="ServiceClass">org.example.www.matchmakingnotificacionservice.MatchMakingNotificacionServiceSkeleton</parameter>
+        <parameter name="useOriginalwsdl">true</parameter>
+        <parameter name="modifyUserWSDLPortAddress">true</parameter>
+        <operation name="readNotify" mep="http://www.w3.org/ns/wsdl/in-out" namespace="http://www.example.org/MatchMakingNotificacionService/">
+            <actionMapping>http://www.example.org/MatchMakingNotificacionService/readNotify</actionMapping>
+            <outputActionMapping>http://www.example.org/MatchMakingNotificacionService/MatchMakingNotificacionService/readNotifyResponse</outputActionMapping>
+        </operation>
+        <operation name="notifyTeam" mep="http://www.w3.org/ns/wsdl/in-out" namespace="http://www.example.org/MatchMakingNotificacionService/">
+            <actionMapping>http://www.example.org/MatchMakingNotificacionService/notifyTeam</actionMapping>
+            <outputActionMapping>http://www.example.org/MatchMakingNotificacionService/MatchMakingNotificacionService/notifyTeamResponse</outputActionMapping>
+        </operation>
+        <operation name="getNotifyTeamList" mep="http://www.w3.org/ns/wsdl/in-out" namespace="http://www.example.org/MatchMakingNotificacionService/">
+            <actionMapping>http://www.example.org/MatchMakingNotificacionService/getNotifyTeamList</actionMapping>
+            <outputActionMapping>http://www.example.org/MatchMakingNotificacionService/MatchMakingNotificacionService/getNotifyTeamListResponse</outputActionMapping>
+        </operation>
+        <operation name="deleteNotify" mep="http://www.w3.org/ns/wsdl/in-out" namespace="http://www.example.org/MatchMakingNotificacionService/">
+            <actionMapping>http://www.example.org/MatchMakingNotificacionService/deleteNotify</actionMapping>
+            <outputActionMapping>http://www.example.org/MatchMakingNotificacionService/MatchMakingNotificacionService/deleteNotifyResponse</outputActionMapping>
+        </operation>
+    </service>
+</serviceGroup>
