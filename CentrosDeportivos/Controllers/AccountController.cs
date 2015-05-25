@@ -77,21 +77,33 @@ namespace CentrosDeportivos.Controllers
         {
             if (ModelState.IsValid)
             {
-                CentrosDeportivos.MembershipService.MembershipService mService = new MembershipService.MembershipService();
-                CentrosDeportivos.MembershipService.Member miembro= new MembershipService.Member();
+                CentrosDeportivos.RegistryBpelService.wsregistry mService = new RegistryBpelService.wsregistry();
+                CentrosDeportivos.RegistryBpelService.Miembro miembro = new RegistryBpelService.Miembro();
                
-             
+                CentrosDeportivos.RegistryBpelService.wsregistryRequest request = new RegistryBpelService.wsregistryRequest();
+                CentrosDeportivos.RegistryBpelService.wsregistryResponse response = new RegistryBpelService.wsregistryResponse();
+
+                miembro.code = "AA";
                 miembro.name = model.Name;
                 miembro.NIF = model.DNI;
-                miembro.email = "mtis@ejemplo.com";
+                miembro.email = model.Email;
                 miembro.password = model.Password;
                 miembro.VIP = false;
                 miembro.surname = "";
                 miembro.Province = "";
                 miembro.City = "";
+
+                request.input = miembro;
+
                 bool res;
                 string message;
-                message = mService.registerMember(miembro, out res);
+                //message = mService.registerMember(miembro, out res);
+                
+                response = mService.process(request);
+
+                res = response.@out;
+                message = response.result;
+
                 if (res)
                 {
                     

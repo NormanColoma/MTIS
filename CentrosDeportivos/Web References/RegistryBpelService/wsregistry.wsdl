@@ -1,0 +1,281 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:wsdl1="http://www.example.org/SportCentreNotification/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:wsaw="http://www.w3.org/2006/05/addressing/wsdl" xmlns:tns="http://wsregistry.bpel.mtis" xmlns:plnk="http://docs.oasis-open.org/wsbpel/2.0/plnktype" xmlns:vprop="http://docs.oasis-open.org/wsbpel/2.0/varprop" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns="http://schemas.xmlsoap.org/wsdl/" targetNamespace="http://wsregistry.bpel.mtis" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <schema xmlns:wsdl="http://www.example.org/MembershipService/" attributeFormDefault="unqualified" elementFormDefault="qualified" targetNamespace="http://wsregistry.bpel.mtis" xmlns="http://www.w3.org/2001/XMLSchema">
+      <element name="wsregistryRequest">
+        <complexType>
+          <sequence>
+            <element name="input" type="tns:Miembro" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="wsregistryResponse">
+        <complexType>
+          <sequence>
+            <element name="result" type="string" />
+            <element name="out" type="boolean" />
+          </sequence>
+        </complexType>
+      </element>
+      <complexType name="Miembro">
+        <sequence>
+          <element name="code" type="string" />
+          <element name="email" type="string" />
+          <element name="name" type="string" />
+          <element name="password" type="string" />
+          <element name="surname" type="string" />
+          <element name="NIF" type="string" />
+          <element name="Province" type="string" />
+          <element name="City" type="string" />
+          <element name="VIP" type="boolean" />
+        </sequence>
+      </complexType>
+    </schema>
+    <xsd:schema xmlns:tns="http://www.example.org/MembershipService/" attributeFormDefault="unqualified" elementFormDefault="unqualified" targetNamespace="http://www.example.org/MembershipService/" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+      <xsd:element name="registerMember">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="member" type="tns:Member" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="registerMemberResponse">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="message" type="xsd:string" />
+            <xsd:element name="status" type="xsd:boolean" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:complexType name="Member">
+        <xsd:sequence>
+          <xsd:element name="code" type="xsd:string" />
+          <xsd:element name="email" type="xsd:string" />
+          <xsd:element name="name" type="xsd:string" />
+          <xsd:element name="password" type="xsd:string" />
+          <xsd:element name="surname" type="xsd:string" />
+          <xsd:element name="NIF" type="xsd:string" />
+          <xsd:element name="Province" type="xsd:string" />
+          <xsd:element name="City" type="xsd:string" />
+          <xsd:element name="VIP" type="xsd:boolean" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:element name="getMember">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="code" type="xsd:string" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="getMemberResponse">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="member" type="tns:Member" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="updateMember">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="member" type="tns:Member" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="updateMemberResponse">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="status" type="xsd:boolean" />
+            <xsd:element name="message" type="xsd:string" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="checkMember">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="memberCode" type="xsd:string" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="checkMemberResponse">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="message" type="xsd:string" />
+            <xsd:element name="ok" type="xsd:boolean" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="sendRegistration">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="in" type="xsd:string" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="sendRegistrationResponse">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="out" type="xsd:string" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="validateMember">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="email" type="xsd:string" />
+            <xsd:element name="password" type="xsd:string" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="validateMemberResponse">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="valid" type="xsd:boolean" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="existsMember">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="email" type="xsd:string" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="existsMemberResponse">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="message" type="xsd:string" />
+            <xsd:element name="exists" type="xsd:boolean" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+    </xsd:schema>
+    <xsd:schema xmlns:tns="http://www.example.org/SportCentreNotification/" attributeFormDefault="unqualified" elementFormDefault="unqualified" targetNamespace="http://www.example.org/SportCentreNotification/" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+      <xsd:element name="sendRegistration">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="memberCode" type="xsd:string" />
+            <xsd:element name="sportCentre" type="xsd:int" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="sendRegistrationResponse">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="message" type="xsd:string" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="sendBooking">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="booking" type="xsd:int" />
+            <xsd:element name="sportCentre" type="xsd:int" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="sendBookingResponse">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="message" type="xsd:string" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="teamCreated">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="team" type="xsd:int" />
+            <xsd:element name="sportCentre" type="xsd:int" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="teamCreatedResponse">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="out" type="xsd:string" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="teamSignedOn">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="team" type="xsd:int" />
+            <xsd:element name="sportCentre" type="xsd:int" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="teamSignedOnResponse">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="out" type="xsd:string" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="userRegistered">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="email" type="xsd:string" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="userRegisteredResponse">
+        <xsd:complexType>
+          <xsd:sequence />
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="matchConfirmed">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="id_team1" type="xsd:int" />
+            <xsd:element name="id_team2" type="xsd:int" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="matchConfirmedResponse">
+        <xsd:complexType>
+          <xsd:sequence />
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="bookingConfirmed">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="email" type="xsd:string" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="bookingConfirmedResponse">
+        <xsd:complexType>
+          <xsd:sequence />
+        </xsd:complexType>
+      </xsd:element>
+    </xsd:schema>
+  </wsdl:types>
+  <wsdl:message name="wsregistryRequestMessage">
+    <wsdl:part name="payload" element="tns:wsregistryRequest" />
+  </wsdl:message>
+  <wsdl:message name="wsregistryResponseMessage">
+    <wsdl:part name="payload" element="tns:wsregistryResponse" />
+  </wsdl:message>
+  <wsdl:portType name="wsregistryPortType">
+    <wsdl:operation name="process">
+      <wsdl:input wsaw:Action="http://wsregistry.bpel.mtis/process" message="tns:wsregistryRequestMessage" />
+      <wsdl:output wsaw:Action="http://wsregistry.bpel.mtis/wsregistry/processResponse" message="tns:wsregistryResponseMessage" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="wsregistryBinding" type="tns:wsregistryPortType">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="process">
+      <soap:operation soapAction="http://wsregistry.bpel.mtis/process" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="wsregistry">
+    <wsdl:port name="wsregistryPort" binding="tns:wsregistryBinding">
+      <soap:address location="http://localhost:8080/ode/processes/wsregistry.wsregistryPort/" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>
