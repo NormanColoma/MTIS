@@ -97,7 +97,6 @@ namespace CentrosDeportivos.Controllers
 
                 bool res;
                 string message;
-                //message = mService.registerMember(miembro, out res);
                 
                 response = mService.process(request);
 
