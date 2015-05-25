@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?><!-- This file was auto-generated from WSDL --><!-- by the Apache Axis2 version: 1.6.2  Built on : Apr 17, 2012 (05:33:49 IST) --><serviceGroup>
+    <service name="TournamentService">
+        <messageReceivers>
+            <messageReceiver mep="http://www.w3.org/ns/wsdl/in-out" class="org.example.www.tournamentservice.TournamentServiceMessageReceiverInOut"/>
+        </messageReceivers>
+        <parameter name="ServiceClass">org.example.www.tournamentservice.TournamentServiceSkeleton</parameter>
+        <parameter name="useOriginalwsdl">true</parameter>
+        <parameter name="modifyUserWSDLPortAddress">true</parameter>
+        <operation name="getTeamsdByTournament" mep="http://www.w3.org/ns/wsdl/in-out" namespace="http://www.example.org/TournamentService/">
+            <actionMapping>http://www.example.org/TournamentService/getTeamsdByTournament</actionMapping>
+            <outputActionMapping>http://www.example.org/TournamentService/TournamentService/getTeamsdByTournamentResponse</outputActionMapping>
+        </operation>
+        <operation name="deleteTournament" mep="http://www.w3.org/ns/wsdl/in-out" namespace="http://www.example.org/TournamentService/">
+            <actionMapping>http://www.example.org/TournamentService/deleteTournament</actionMapping>
+            <outputActionMapping>http://www.example.org/TournamentService/TournamentService/deleteTournamentResponse</outputActionMapping>
+        </operation>
+        <operation name="validateInscription" mep="http://www.w3.org/ns/wsdl/in-out" namespace="http://www.example.org/TournamentService/">
+            <actionMapping>http://www.example.org/TournamentService/validateInscription</actionMapping>
+            <outputActionMapping>http://www.example.org/TournamentService/TournamentService/validateInscriptionResponse</outputActionMapping>
+        </operation>
+        <operation name="startTournament" mep="http://www.w3.org/ns/wsdl/in-out" namespace="http://www.example.org/TournamentService/">
+            <actionMapping>http://www.example.org/TournamentService/startTournament</actionMapping>
+            <outputActionMapping>http://www.example.org/TournamentService/TournamentService/startTournamentResponse</outputActionMapping>
+        </operation>
+        <operation name="getAvalibleTournaments" mep="http://www.w3.org/ns/wsdl/in-out" namespace="http://www.example.org/TournamentService/">
+            <actionMapping>http://www.example.org/TournamentService/getAvalibleTournaments</actionMapping>
+            <outputActionMapping>http://www.example.org/TournamentService/TournamentService/getAvalibleTournamentsResponse</outputActionMapping>
+        </operation>
+        <operation name="disjoinTournament" mep="http://www.w3.org/ns/wsdl/in-out" namespace="http://www.example.org/TournamentService/">
+            <actionMapping>http://www.example.org/TournamentService/disjoinTournament</actionMapping>
+            <outputActionMapping>http://www.example.org/TournamentService/TournamentService/disjoinTournamentResponse</outputActionMapping>
+        </operation>
+        <operation name="addNewTournament" mep="http://www.w3.org/ns/wsdl/in-out" namespace="http://www.example.org/TournamentService/">
+            <actionMapping>http://www.example.org/TournamentService/addNewTournament</actionMapping>
+            <outputActionMapping>http://www.example.org/TournamentService/TournamentService/addNewTournamentResponse</outputActionMapping>
+        </operation>
+        <operation name="joinTournament" mep="http://www.w3.org/ns/wsdl/in-out" namespace="http://www.example.org/TournamentService/">
+            <actionMapping>http://www.example.org/TournamentService/joinTournament</actionMapping>
+            <outputActionMapping>http://www.example.org/TournamentService/TournamentService/joinTournamentResponse</outputActionMapping>
+        </operation>
+    </service>
+</serviceGroup>

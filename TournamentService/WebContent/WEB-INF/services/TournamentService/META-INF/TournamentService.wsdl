@@ -1,0 +1,320 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wsdl:definitions name="TournamentService" targetNamespace="http://www.example.org/TournamentService/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:tns="http://www.example.org/TournamentService/" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/">
+  <wsdl:types>
+    <xsd:schema targetNamespace="http://www.example.org/TournamentService/">
+
+
+
+
+
+
+
+
+
+
+
+
+      <xsd:element name="sport" type="xsd:string"/>
+      <xsd:element name="listTournaments" type="tns:Tournaments"/>
+
+      <xsd:complexType name="Tournaments">
+      	<xsd:sequence>
+      		<xsd:element maxOccurs="unbounded" minOccurs="0" name="listTournaments" type="tns:Tournament"/>
+      	</xsd:sequence>
+      </xsd:complexType>
+    
+      <xsd:complexType name="Tournament">
+      	<xsd:sequence>
+      		<xsd:element name="id" type="xsd:int"/>
+      		<xsd:element name="name" type="xsd:string"/>
+      		<xsd:element name="info" type="xsd:string"/>
+      		<xsd:element name="sport" type="xsd:string"/>
+      		<xsd:element name="sportCenter" type="xsd:int"/>
+      		<xsd:element name="startData" type="xsd:string"/>
+      		<xsd:element name="endData" type="xsd:string"/>
+      		<xsd:element name="playing" type="xsd:int"/>
+      		<xsd:element maxOccurs="unbounded" minOccurs="0" name="teams" type="tns:Team"/>
+      	</xsd:sequence>
+      </xsd:complexType>
+    
+      <xsd:complexType name="Team">
+      	<xsd:sequence>
+      		<xsd:element name="id" type="xsd:int"/>
+      		<xsd:element name="name" type="xsd:string"/>
+      		<xsd:element name="sport" type="xsd:string"/>
+      		<xsd:element name="img" type="xsd:string"/>
+      	</xsd:sequence>
+      </xsd:complexType>
+      <xsd:element name="tournament" type="tns:Tournament"/>
+      <xsd:element name="RespuestaBooleana" type="xsd:boolean"/>
+            <xsd:element name="tournamentId" type="xsd:int"/>
+            <xsd:element name="tournamentTeam" type="tns:tournamentTeam">
+            </xsd:element>
+            
+            <xsd:complexType name="tournamentTeam">
+            	<xsd:sequence>
+            		<xsd:element name="tournament" type="xsd:int"/>
+            		<xsd:element name="team" type="xsd:int"/>
+            	</xsd:sequence>
+            </xsd:complexType>
+            <xsd:element name="inscripcion" type="tns:inscripcionTorneo">
+            </xsd:element>
+            
+            <xsd:complexType name="inscripcionTorneo">
+            	<xsd:sequence>
+            		<xsd:element name="idTorneo" type="xsd:int"/>
+            		<xsd:element name="equipo" type="tns:Team"/>
+            	</xsd:sequence>
+            </xsd:complexType>
+
+
+
+            <xsd:element name="listTeams" type="tns:Teams"/>
+            
+            <xsd:complexType name="Teams">
+            	<xsd:sequence>
+            		<xsd:element maxOccurs="unbounded" minOccurs="0" name="listaEquipos" type="tns:Team"/>
+            	</xsd:sequence>
+            </xsd:complexType>
+            <xsd:element name="in" type="xsd:string"/>
+            <xsd:element name="NewOperationResponse">
+            	<xsd:complexType>
+            		<xsd:sequence>
+            			<xsd:element name="out" type="xsd:string"/>
+            		</xsd:sequence>
+            	</xsd:complexType>
+            </xsd:element>
+            <xsd:element name="in1" type="xsd:string"/>
+            <xsd:element name="NewOperationResponse1">
+            	<xsd:complexType>
+            		<xsd:sequence>
+            			<xsd:element name="out" type="xsd:string"/>
+            		</xsd:sequence>
+            	</xsd:complexType>
+            </xsd:element>
+            <xsd:element name="newTournement" type="tns:newTournament">
+            </xsd:element>
+            
+            <xsd:complexType name="newTournament">
+            	<xsd:sequence>
+            		<xsd:element name="name" type="xsd:string"/>
+            		<xsd:element name="info" type="xsd:string"/>
+            		<xsd:element name="sport" type="xsd:string"/>
+            		<xsd:element name="sportCenter" type="xsd:int"/>
+            		<xsd:element name="dataStart" type="xsd:string"/>
+            		<xsd:element name="endData" type="xsd:string"/>
+            	</xsd:sequence>
+            </xsd:complexType>
+    </xsd:schema>
+  </wsdl:types>
+  <wsdl:message name="joinTournamentRequest">
+    <wsdl:part name="parameters" element="tns:tournamentTeam">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="joinTournamentResponse">
+    <wsdl:part name="parameters" element="tns:RespuestaBooleana">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="NewOperationResponse1">
+    <wsdl:part name="parameters" element="tns:NewOperationResponse">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="addNewTournamentRequest">
+    <wsdl:part name="parameters" element="tns:newTournement">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getTeamsdByTournamentResponse1">
+    <wsdl:part name="parameters" element="tns:listTeams">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="addNewTournamentResponse">
+    <wsdl:part name="parameters" element="tns:RespuestaBooleana">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="NewOperationRequest">
+    <wsdl:part name="NewOperationRequest" element="tns:in">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="startTournamentRequest2">
+    <wsdl:part name="parameters" element="tns:tournamentId">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getAvalibleTournamentsRequest">
+    <wsdl:part name="parameters" element="tns:sport">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="NewOperationResponse">
+    <wsdl:part name="parameters" element="tns:NewOperationResponse">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="deleteTournamentResponse">
+    <wsdl:part name="parameters" element="tns:RespuestaBooleana">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="startTournamentResponse2">
+    <wsdl:part name="parameters" element="tns:RespuestaBooleana">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getAvalibleTournamentsResponse">
+    <wsdl:part name="parameters" element="tns:listTournaments">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="deleteTournamentRequest">
+    <wsdl:part name="parameters" element="tns:tournamentId">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="disjoinTournamentRequest">
+    <wsdl:part name="parameters" element="tns:tournamentTeam">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="validateInscriptionRequest">
+    <wsdl:part name="parameters" element="tns:inscripcion">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="NewOperationRequest1">
+    <wsdl:part name="NewOperationRequest1" element="tns:in">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="disjoinTournamentResponse">
+    <wsdl:part name="parameters" element="tns:RespuestaBooleana">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="validateInscriptionResponse">
+    <wsdl:part name="parameters" element="tns:RespuestaBooleana">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getTeamsdByTournamentRequest1">
+    <wsdl:part name="parameters" element="tns:tournamentId">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:portType name="TournamentService">
+    <wsdl:operation name="getAvalibleTournaments">
+      <wsdl:input message="tns:getAvalibleTournamentsRequest">
+    </wsdl:input>
+      <wsdl:output message="tns:getAvalibleTournamentsResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="addNewTournament">
+      <wsdl:input message="tns:addNewTournamentRequest">
+    </wsdl:input>
+      <wsdl:output message="tns:addNewTournamentResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="deleteTournament">
+      <wsdl:input message="tns:deleteTournamentRequest">
+    </wsdl:input>
+      <wsdl:output message="tns:deleteTournamentResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="joinTournament">
+      <wsdl:input message="tns:joinTournamentRequest">
+    </wsdl:input>
+      <wsdl:output message="tns:joinTournamentResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="disjoinTournament">
+      <wsdl:input message="tns:disjoinTournamentRequest">
+    </wsdl:input>
+      <wsdl:output message="tns:disjoinTournamentResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="validateInscription">
+      <wsdl:input message="tns:validateInscriptionRequest">
+    </wsdl:input>
+      <wsdl:output message="tns:validateInscriptionResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getTeamsdByTournament">
+      <wsdl:input message="tns:getTeamsdByTournamentRequest1">
+    </wsdl:input>
+      <wsdl:output message="tns:getTeamsdByTournamentResponse1">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="startTournament">
+      <wsdl:input message="tns:startTournamentRequest2">
+    </wsdl:input>
+      <wsdl:output message="tns:startTournamentResponse2">
+    </wsdl:output>
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="TournamentServiceSOAP" type="tns:TournamentService">
+    <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+    <wsdl:operation name="getAvalibleTournaments">
+      <soap:operation soapAction="http://www.example.org/TournamentService/getAvalibleTournaments"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="addNewTournament">
+      <soap:operation soapAction="http://www.example.org/TournamentService/addNewTournament"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="deleteTournament">
+      <soap:operation soapAction="http://www.example.org/TournamentService/deleteTournament"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="joinTournament">
+      <soap:operation soapAction="http://www.example.org/TournamentService/joinTournament"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="disjoinTournament">
+      <soap:operation soapAction="http://www.example.org/TournamentService/disjoinTournament"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="validateInscription">
+      <soap:operation soapAction="http://www.example.org/TournamentService/validateInscription"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getTeamsdByTournament">
+      <soap:operation soapAction="http://www.example.org/TournamentService/getTeamsdByTournament"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="startTournament">
+      <soap:operation soapAction="http://www.example.org/TournamentService/startTournament"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="TournamentService">
+    <wsdl:port name="TournamentServiceSOAP" binding="tns:TournamentServiceSOAP">
+      <soap:address location="http://www.example.org/"/>
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>
