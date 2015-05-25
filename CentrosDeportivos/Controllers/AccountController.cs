@@ -105,7 +105,17 @@ namespace CentrosDeportivos.Controllers
 
                 if (res)
                 {
-                    
+                    var identity = new ClaimsIdentity(new[] {
+                            new Claim(ClaimTypes.Name, model.Email),
+                        },
+                       DefaultAuthenticationTypes.ApplicationCookie,
+                       ClaimTypes.Name, ClaimTypes.Role);
+                    IOwinContext owinContext = HttpContext.GetOwinContext();
+                    IAuthenticationManager authenticationManager = owinContext.Authentication;
+                    authenticationManager.SignIn(new AuthenticationProperties
+                    {
+                        IsPersistent = false
+                    }, identity);   
                     return RedirectToAction("index", "home");
                 }
                 else
