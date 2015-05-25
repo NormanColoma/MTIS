@@ -103,6 +103,35 @@
           </xsd:sequence>
         </xsd:complexType>
       </xsd:element>
+      <xsd:element name="existsMember">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="email" type="xsd:string" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="existsMemberResponse">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="message" type="xsd:string" />
+            <xsd:element name="exists" type="xsd:boolean" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="getMemberCode">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="email" type="xsd:string" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="getMemberCodeResponse">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="memberCoder" type="xsd:int" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
     </xsd:schema>
   </wsdl:types>
   <wsdl:message name="sendRegistrationResponse">
@@ -111,14 +140,26 @@
   <wsdl:message name="registerMemberRequest">
     <wsdl:part name="parameters" element="tns:registerMember" />
   </wsdl:message>
-  <wsdl:message name="checkMemberResponse">
-    <wsdl:part name="parameters" element="tns:checkMemberResponse" />
-  </wsdl:message>
   <wsdl:message name="getMemberResponse">
     <wsdl:part name="parameters" element="tns:getMemberResponse" />
   </wsdl:message>
+  <wsdl:message name="getMemberCodeRequest">
+    <wsdl:part name="parameters" element="tns:getMemberCode" />
+  </wsdl:message>
   <wsdl:message name="sendRegistrationRequest">
     <wsdl:part name="parameters" element="tns:sendRegistration" />
+  </wsdl:message>
+  <wsdl:message name="getMemberRequest">
+    <wsdl:part name="parameters" element="tns:getMember" />
+  </wsdl:message>
+  <wsdl:message name="updateMemberResponse">
+    <wsdl:part name="parameters" element="tns:updateMemberResponse" />
+  </wsdl:message>
+  <wsdl:message name="registerMemberResponse">
+    <wsdl:part name="parameters" element="tns:registerMemberResponse" />
+  </wsdl:message>
+  <wsdl:message name="checkMemberResponse">
+    <wsdl:part name="parameters" element="tns:checkMemberResponse" />
   </wsdl:message>
   <wsdl:message name="validateMemberResponse">
     <wsdl:part name="parameters" element="tns:validateMemberResponse" />
@@ -126,20 +167,20 @@
   <wsdl:message name="checkMemberRequest">
     <wsdl:part name="parameters" element="tns:checkMember" />
   </wsdl:message>
-  <wsdl:message name="getMemberRequest">
-    <wsdl:part name="parameters" element="tns:getMember" />
-  </wsdl:message>
   <wsdl:message name="updateMemberRequest">
     <wsdl:part name="parameters" element="tns:updateMember" />
   </wsdl:message>
-  <wsdl:message name="updateMemberResponse">
-    <wsdl:part name="parameters" element="tns:updateMemberResponse" />
+  <wsdl:message name="existsMemberResponse">
+    <wsdl:part name="parameters" element="tns:existsMemberResponse" />
   </wsdl:message>
   <wsdl:message name="validateMemberRequest">
     <wsdl:part name="parameters" element="tns:validateMember" />
   </wsdl:message>
-  <wsdl:message name="registerMemberResponse">
-    <wsdl:part name="parameters" element="tns:registerMemberResponse" />
+  <wsdl:message name="existsMemberRequest">
+    <wsdl:part name="parameters" element="tns:existsMember" />
+  </wsdl:message>
+  <wsdl:message name="getMemberCodeResponse">
+    <wsdl:part name="parameters" element="tns:getMemberCodeResponse" />
   </wsdl:message>
   <wsdl:portType name="MembershipService">
     <wsdl:operation name="registerMember">
@@ -161,6 +202,14 @@
     <wsdl:operation name="validateMember">
       <wsdl:input message="tns:validateMemberRequest" />
       <wsdl:output message="tns:validateMemberResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="existsMember">
+      <wsdl:input message="tns:existsMemberRequest" />
+      <wsdl:output message="tns:existsMemberResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="getMemberCode">
+      <wsdl:input message="tns:getMemberCodeRequest" />
+      <wsdl:output message="tns:getMemberCodeResponse" />
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:binding name="MembershipServiceSOAP" type="tns:MembershipService">
@@ -203,6 +252,24 @@
     </wsdl:operation>
     <wsdl:operation name="validateMember">
       <soap:operation soapAction="http://www.example.org/MembershipService/validateMember" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="existsMember">
+      <soap:operation soapAction="http://www.example.org/MembershipService/existsMember" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getMemberCode">
+      <soap:operation soapAction="http://www.example.org/MembershipService/getMemberCode" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>

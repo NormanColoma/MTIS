@@ -8,5 +8,8 @@
     <Setting Name="CentrosDeportivos_MembershipService_MembershipService" Type="(Web Service URL)" Scope="Application">
       <Value Profile="(Default)">http://localhost:8080/ProyectoMTIS/services/MembershipService/</Value>
     </Setting>
+    <Setting Name="CentrosDeportivos_RegistryBpelService_wsregistry" Type="(Web Service URL)" Scope="Application">
+      <Value Profile="(Default)">http://localhost:8080/ode/processes/wsregistry.wsregistryPort/</Value>
+    </Setting>
   </Settings>
 </SettingsFile>
