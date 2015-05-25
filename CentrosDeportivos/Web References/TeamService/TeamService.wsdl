@@ -1,0 +1,341 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tns="http://www.example.org/TeamService/" name="TeamService" targetNamespace="http://www.example.org/TeamService/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <xsd:schema targetNamespace="http://www.example.org/TeamService/">
+      <xsd:element name="createTeam">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="team" type="tns:Team" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="createTeamResponse">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="message" type="xsd:string" />
+            <xsd:element name="ok" type="xsd:boolean" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:complexType name="Team">
+        <xsd:sequence>
+          <xsd:element name="id" type="xsd:int" />
+          <xsd:element name="name" type="xsd:string" />
+          <xsd:element name="sport" type="xsd:string" />
+          <xsd:element name="img" type="xsd:string" />
+          <xsd:element name="captain" type="xsd:string" />
+          <xsd:element minOccurs="5" maxOccurs="20" name="players" type="tns:Member" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="Member">
+        <xsd:sequence>
+          <xsd:element name="name" type="xsd:string" />
+          <xsd:element name="pass" type="xsd:string" />
+          <xsd:element name="surname" type="xsd:string" />
+          <xsd:element name="email" type="xsd:string" />
+          <xsd:element name="city" type="xsd:string" />
+          <xsd:element name="province" type="xsd:string" />
+          <xsd:element name="NIF" type="xsd:string" />
+          <xsd:element name="img" type="xsd:string" />
+          <xsd:element name="VIP" type="xsd:boolean" />
+          <xsd:element name="sportCenter" type="xsd:string" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:element name="deleteTeam">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="id" type="xsd:int" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="deleteTeamResponse">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="message" type="xsd:string" />
+            <xsd:element name="boolean" type="xsd:boolean" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="updateTeam">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="team" type="tns:Team" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="updateTeamResponse">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="message" type="xsd:string" />
+            <xsd:element name="boolean" type="xsd:boolean" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="notifyPlayers">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element minOccurs="0" maxOccurs="unbounded" name="players" type="xsd:string" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="notifyPlayersResponse">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="message" type="xsd:string" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="addPlayer">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="email" type="xsd:string" />
+            <xsd:element name="id_team" type="xsd:int" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="NewOperationResponse">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="out" type="xsd:string" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="addPlayerResponse1">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="message" type="xsd:string" />
+            <xsd:element name="status" type="xsd:boolean" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="getCaptain">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="nif" type="xsd:string" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="getCaptainResponse1">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="status" type="xsd:boolean" />
+            <xsd:element name="email" type="xsd:string" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="NewOperation1">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="in" type="xsd:string" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="NewOperation1Response">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="out" type="xsd:string" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="getTeam">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="id_team" type="xsd:int" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="getTeamResponse1">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="out" type="tns:Team" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="getTeamsInMatchMaking">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="sport" type="xsd:string" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="getTeamsInMatchMakingResponse1">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element minOccurs="0" maxOccurs="unbounded" name="teams" type="tns:Team" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+    </xsd:schema>
+  </wsdl:types>
+  <wsdl:message name="deleteTeamResponse">
+    <wsdl:part name="parameters" element="tns:deleteTeamResponse" />
+  </wsdl:message>
+  <wsdl:message name="createTeamRequest">
+    <wsdl:part name="parameters" element="tns:createTeam" />
+  </wsdl:message>
+  <wsdl:message name="getTeamRequest">
+    <wsdl:part name="parameters" element="tns:getTeam" />
+  </wsdl:message>
+  <wsdl:message name="NewOperation1Response">
+    <wsdl:part name="parameters" element="tns:NewOperation1Response" />
+  </wsdl:message>
+  <wsdl:message name="notifyPlayersResponse">
+    <wsdl:part name="parameters" element="tns:notifyPlayersResponse" />
+  </wsdl:message>
+  <wsdl:message name="getTeamsInMatchMakingResponse1">
+    <wsdl:part name="parameters" element="tns:getTeamsInMatchMakingResponse1" />
+  </wsdl:message>
+  <wsdl:message name="addPlayerResponse1">
+    <wsdl:part name="parameters" element="tns:addPlayerResponse1" />
+  </wsdl:message>
+  <wsdl:message name="notifyPlayersRequest">
+    <wsdl:part name="parameters" element="tns:notifyPlayers" />
+  </wsdl:message>
+  <wsdl:message name="deleteTeamRequest">
+    <wsdl:part name="parameters" element="tns:deleteTeam" />
+  </wsdl:message>
+  <wsdl:message name="NewOperation1Request">
+    <wsdl:part name="parameters" element="tns:NewOperation1" />
+  </wsdl:message>
+  <wsdl:message name="addPlayerRequest">
+    <wsdl:part name="parameters" element="tns:addPlayer" />
+  </wsdl:message>
+  <wsdl:message name="NewOperationResponse">
+    <wsdl:part name="parameters" element="tns:NewOperationResponse" />
+  </wsdl:message>
+  <wsdl:message name="getTeamsInMatchMakingRequest">
+    <wsdl:part name="parameters" element="tns:getTeamsInMatchMaking" />
+  </wsdl:message>
+  <wsdl:message name="getCaptainResponse1">
+    <wsdl:part name="parameters" element="tns:getCaptainResponse1" />
+  </wsdl:message>
+  <wsdl:message name="updateTeamResponse">
+    <wsdl:part name="parameters" element="tns:updateTeamResponse" />
+  </wsdl:message>
+  <wsdl:message name="createTeamResponse">
+    <wsdl:part name="parameters" element="tns:createTeamResponse" />
+  </wsdl:message>
+  <wsdl:message name="getCaptainRequest">
+    <wsdl:part name="parameters" element="tns:getCaptain" />
+  </wsdl:message>
+  <wsdl:message name="updateTeamRequest">
+    <wsdl:part name="parameters" element="tns:updateTeam" />
+  </wsdl:message>
+  <wsdl:message name="getTeamResponse1">
+    <wsdl:part name="parameters" element="tns:getTeamResponse1" />
+  </wsdl:message>
+  <wsdl:portType name="TeamService">
+    <wsdl:operation name="createTeam">
+      <wsdl:input message="tns:createTeamRequest" />
+      <wsdl:output message="tns:createTeamResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="deleteTeam">
+      <wsdl:input message="tns:deleteTeamRequest" />
+      <wsdl:output message="tns:deleteTeamResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="updateTeam">
+      <wsdl:input message="tns:updateTeamRequest" />
+      <wsdl:output message="tns:updateTeamResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="notifyPlayers">
+      <wsdl:input message="tns:notifyPlayersRequest" />
+      <wsdl:output message="tns:notifyPlayersResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="addPlayer">
+      <wsdl:input message="tns:addPlayerRequest" />
+      <wsdl:output message="tns:addPlayerResponse1" />
+    </wsdl:operation>
+    <wsdl:operation name="getCaptain">
+      <wsdl:input message="tns:getCaptainRequest" />
+      <wsdl:output message="tns:getCaptainResponse1" />
+    </wsdl:operation>
+    <wsdl:operation name="getTeam">
+      <wsdl:input message="tns:getTeamRequest" />
+      <wsdl:output message="tns:getTeamResponse1" />
+    </wsdl:operation>
+    <wsdl:operation name="getTeamsInMatchMaking">
+      <wsdl:input message="tns:getTeamsInMatchMakingRequest" />
+      <wsdl:output message="tns:getTeamsInMatchMakingResponse1" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="TeamServiceSOAP" type="tns:TeamService">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="createTeam">
+      <soap:operation soapAction="http://www.example.org/TeamService/createTeam" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="deleteTeam">
+      <soap:operation soapAction="http://www.example.org/TeamService/deleteTeam" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="updateTeam">
+      <soap:operation soapAction="http://www.example.org/TeamService/updateTeam" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="notifyPlayers">
+      <soap:operation soapAction="http://www.example.org/TeamService/notifyPlayers" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="addPlayer">
+      <soap:operation soapAction="http://www.example.org/TeamService/addPlayer" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getCaptain">
+      <soap:operation soapAction="http://www.example.org/TeamService/getCaptain" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getTeam">
+      <soap:operation soapAction="http://www.example.org/TeamService/getTeam" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getTeamsInMatchMaking">
+      <soap:operation soapAction="http://www.example.org/TeamService/getTeamsInMatchMaking" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="TeamService">
+    <wsdl:port name="TeamServiceSOAP" binding="tns:TeamServiceSOAP">
+      <soap:address location="http://localhost:8080/ProyectoMTIS/services/TeamService/" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

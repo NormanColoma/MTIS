@@ -7,7 +7,7 @@
 <div class="matchMakingContainer">
     <div class="form-group">
         <label>Deporte</label>
-        <select class="form-control">
+        <select class="form-control sports">
             <option>Selecciona el deporte</option>
             <option>Fútbol 11</option>
             <option>Fútbol sala</option>
@@ -18,6 +18,9 @@
             <option>Voleibol</option>
         </select>
     </div>
-    <input type="button" class="btn btn-primary" value="Buscar rivales" />
+    <input type="button" class="btn btn-primary search-teams" value="Buscar rivales" />
     @Html.ActionLink("Registrar equipo en Matchmaking", "Register", "Matchmaking", new { area = "" }, new { @class = "default-link" })
 </div>
+@section Scripts {
+    @Scripts.Render("~/Scripts/matchmaking-searcher.js")
+}
