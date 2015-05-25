@@ -24,5 +24,27 @@ namespace CentrosDeportivos.Controllers
             ViewData["date"] = date+" "+time+":00";
             return View();
         }
+
+        [HttpPost]
+        public ActionResult PayMethod(PayMethodViewModel model)
+        {
+            if (ModelState.IsValid)
+            {
+                if (model.PayMethod.Equals("Selecciona el método de pago"))
+                    ModelState.AddModelError("", "Debe seleccionar un método de pago");
+                else
+                {
+                    //TODO - Aquí añadir las comprobaciones del servicio BPEL 
+                    return RedirectToAction("Created", "Booking");
+                }
+            
+            }
+            return View(model);
+        }
+
+        public ActionResult Created()
+        {
+            return View();
+        }
     }
 }
