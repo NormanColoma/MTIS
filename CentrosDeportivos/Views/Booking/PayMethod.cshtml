@@ -1,0 +1,43 @@
+﻿@using CentrosDeportivos.Models
+@model PayMethodViewModel
+@{
+    ViewBag.Title = "PayMethod";
+    var sport = ViewData["id_sport"];
+    var field = ViewData["id_field"];
+    var date = ViewData["date"];
+    var time = ViewData["time"];
+}
+
+<h2>Método de pago</h2>
+<p>Selecciona elñ método de pago para finalizar la reserva. Puedes pagar con tarjeta, o efectivo (en cuyo paso se pagará en el centro)</p>
+
+<div class="pay-method-container">
+    <section id="registerForm">
+        @using (Html.BeginForm("Booking", "Create", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
+        {
+            <div class="form-group">
+                @Html.DropDownListFor(m => m.PayMethod, new SelectList(
+                    new List<object>
+                    {
+                        new{ value= "Selecciona el método de pago", text ="Selecciona el método de pago"},
+                        new{ value= "Tarjeta de crédito", text="Tarjeta de crédito"},
+                        new{ value= "Cuenta bancaria", text="Cuenta bancaria"},
+                        new{ value= "En efectivo", text="En efectivo"}
+                    }, "value", "text", 1
+                ), new { @class = "form-control" })
+            </div>
+            <div class="credit-card form-group" hidden="hidden">
+                @Html.LabelFor(m => m.CreditCard, new { @class = "col-md-2" })
+                @Html.TextBoxFor(m => m.CreditCard, new { @class = "form-control"})
+            </div>
+            <div class="iban form-group" hidden="hidden">
+                @Html.LabelFor(m => m.Iban, new { @class = "col-md-2" })
+                @Html.TextBoxFor(m => m.Iban, new { @class = "form-control" })
+            </div>
+            <input type="submit" class="btn btn-primary" value="Procesar reserva" />
+        }
+    </section>
+</div>
+@section Scripts {
+    @Scripts.Render("~/Scripts/PayMethod.js")
+}

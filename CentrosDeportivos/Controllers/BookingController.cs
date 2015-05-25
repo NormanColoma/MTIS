@@ -16,5 +16,13 @@ namespace CentrosDeportivos.Controllers
             List<CentrosDeportivos.SportCenterService.SportCenter> centers = new List<CentrosDeportivos.SportCenterService.SportCenter>(sc.getSportCenters());
             return View(centers);
         }
+
+        public ActionResult PayMethod(int id_sport, int id_field, string date, string time)
+        {
+            ViewData["id_sport"] = id_sport;
+            ViewData["id_field"] = id_field;
+            ViewData["date"] = date+" "+time+":00";
+            return View();
+        }
     }
 }

@@ -4,11 +4,8 @@
         var center = $("#centers option:selected").val();
         getSports(center);
     })
-  
+    
     $(".available-fields").click(function () {
-        //TODO Aquí deberías obtner el día y la hora, para luego pasárselo a la función que compruebe la disponibilidad;
-       
-
         var idsportprov = $("#sports option:selected").val();
         var idscprov = $("#centers option:selected").val();
         
@@ -26,6 +23,8 @@
         checkAvailability(idsportprov, idscprov, fecha);
        
     })
+
+    
 })
 
 function getSports(center) {
@@ -72,7 +71,7 @@ function checkAvailability(idsportprov, idscprov, fecha) {
         dataType: 'json',
         success: function (data) {
             var fields = data;
-            addFields(fields);
+            addFields(fields,fecha);
 
         },
         statusCode: {
@@ -83,12 +82,24 @@ function checkAvailability(idsportprov, idscprov, fecha) {
     });
 }
 
-function addFields(fields) {
+function addFields(fields,fecha) {
     //TODO-Aquí tienes que añadir al select de campos disponibles los campos disponibles tras la consumición del servicio
     for (var i = 0; i < fields.length; i++) {
         var field = '<div class="field-container"><div class="field">' + '<img src="/Content/img/fields/' + fields[i].imgField +
         '" class="center-img" /><div class="book-field" id="' + fields[i].idField + '"><span>' + fields[i].nameField +
-        '</span></div></div><a>Reserva la pista ya</a></div>';
+        '</span></div></div><a class="make-booking">Reserva la pista ya</a></div>';
         $('#showfields').append(field);
     }
+
+    $(".make-booking").click(function () {
+        var parent = $(this).closest("div");
+        var id_field = parent.find(".book-field").attr("id");
+        var port = location.port; //Obtenemos el puerto
+        var split_date = fecha.split(" ");
+        var date = split_date[0];
+        var time_split = split_date[1].split(":");
+        var time = time_split[0];
+        var uri = "http://localhost:" + port + "/Booking/PayMethod/sport/"+$("#sports option:selected").val()+"/field/"+id_field+"/date/"+date+"/time/"+time //Dirección del servicio REST
+        window.location.href = uri;
+    })
 }
