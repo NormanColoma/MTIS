@@ -16,3 +16,72 @@
 .form-group{
     margin-bottom:30px;
 }
+
+.field{
+  margin-top: 30px;
+  border:1px solid #dce0e0;
+  border-radius:2px;
+  float: left;
+  width:202px;
+  
+}
+
+.field-container:hover .field{
+    box-shadow: 0 0 6px #757475;
+  -webkit-box-shadow: 0px 0 6px #757475;
+}
+
+.field-container:hover .book-field{
+    background-color:black;
+}
+
+
+.field-container:hover a{
+    visibility:visible;
+}
+
+.field-container{
+  float: left;
+  width: 202px;
+  margin-right: 100px;
+}
+.field-container a{
+    cursor:pointer;
+    float: left;
+    width: 100%;
+    margin-left: 35px;
+    margin-top:2px;
+    visibility:hidden;
+}
+
+.field img{
+      width: 200px;
+      float:left;
+}
+
+.field label{
+      float: left;
+      padding: 10px;
+}
+
+.book-field{
+  float: left;
+  width: 100%;
+  background-color: #222;
+  border-bottom-right-radius: 2px;
+  border-bottom-left-radius: 2px;
+}
+
+
+
+.book-field span{
+  padding: 10px;
+  float: left;
+  margin-left: 45px;
+  color: white;
+}
+
+footer, hr{
+    width:100%;
+    float:left;
+}

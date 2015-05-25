@@ -39,6 +39,10 @@ namespace CentrosDeportivos.MembershipService {
         
         private System.Threading.SendOrPostCallback validateMemberOperationCompleted;
         
+        private System.Threading.SendOrPostCallback existsMemberOperationCompleted;
+        
+        private System.Threading.SendOrPostCallback getMemberCodeOperationCompleted;
+        
         private bool useDefaultCredentialsSetExplicitly;
         
         /// <remarks/>
@@ -91,6 +95,12 @@ namespace CentrosDeportivos.MembershipService {
         
         /// <remarks/>
         public event validateMemberCompletedEventHandler validateMemberCompleted;
+        
+        /// <remarks/>
+        public event existsMemberCompletedEventHandler existsMemberCompleted;
+        
+        /// <remarks/>
+        public event getMemberCodeCompletedEventHandler getMemberCodeCompleted;
         
         /// <remarks/>
         [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://www.example.org/MembershipService/registerMember", RequestNamespace="http://www.example.org/MembershipService/", ResponseNamespace="http://www.example.org/MembershipService/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
@@ -244,6 +254,67 @@ namespace CentrosDeportivos.MembershipService {
             if ((this.validateMemberCompleted != null)) {
                 System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
                 this.validateMemberCompleted(this, new validateMemberCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
+            }
+        }
+        
+        /// <remarks/>
+        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://www.example.org/MembershipService/existsMember", RequestNamespace="http://www.example.org/MembershipService/", ResponseNamespace="http://www.example.org/MembershipService/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+        [return: System.Xml.Serialization.XmlElementAttribute("message", Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
+        public string existsMember([System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified)] string email, [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified)] out bool exists) {
+            object[] results = this.Invoke("existsMember", new object[] {
+                        email});
+            exists = ((bool)(results[1]));
+            return ((string)(results[0]));
+        }
+        
+        /// <remarks/>
+        public void existsMemberAsync(string email) {
+            this.existsMemberAsync(email, null);
+        }
+        
+        /// <remarks/>
+        public void existsMemberAsync(string email, object userState) {
+            if ((this.existsMemberOperationCompleted == null)) {
+                this.existsMemberOperationCompleted = new System.Threading.SendOrPostCallback(this.OnexistsMemberOperationCompleted);
+            }
+            this.InvokeAsync("existsMember", new object[] {
+                        email}, this.existsMemberOperationCompleted, userState);
+        }
+        
+        private void OnexistsMemberOperationCompleted(object arg) {
+            if ((this.existsMemberCompleted != null)) {
+                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
+                this.existsMemberCompleted(this, new existsMemberCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
+            }
+        }
+        
+        /// <remarks/>
+        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://www.example.org/MembershipService/getMemberCode", RequestNamespace="http://www.example.org/MembershipService/", ResponseNamespace="http://www.example.org/MembershipService/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+        [return: System.Xml.Serialization.XmlElementAttribute("memberCoder", Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
+        public int getMemberCode([System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified)] string email) {
+            object[] results = this.Invoke("getMemberCode", new object[] {
+                        email});
+            return ((int)(results[0]));
+        }
+        
+        /// <remarks/>
+        public void getMemberCodeAsync(string email) {
+            this.getMemberCodeAsync(email, null);
+        }
+        
+        /// <remarks/>
+        public void getMemberCodeAsync(string email, object userState) {
+            if ((this.getMemberCodeOperationCompleted == null)) {
+                this.getMemberCodeOperationCompleted = new System.Threading.SendOrPostCallback(this.OngetMemberCodeOperationCompleted);
+            }
+            this.InvokeAsync("getMemberCode", new object[] {
+                        email}, this.getMemberCodeOperationCompleted, userState);
+        }
+        
+        private void OngetMemberCodeOperationCompleted(object arg) {
+            if ((this.getMemberCodeCompleted != null)) {
+                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
+                this.getMemberCodeCompleted(this, new getMemberCodeCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
             }
         }
         
@@ -542,6 +613,66 @@ namespace CentrosDeportivos.MembershipService {
             get {
                 this.RaiseExceptionIfNecessary();
                 return ((bool)(this.results[0]));
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.0.30319.34209")]
+    public delegate void existsMemberCompletedEventHandler(object sender, existsMemberCompletedEventArgs e);
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.0.30319.34209")]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    public partial class existsMemberCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+        
+        private object[] results;
+        
+        internal existsMemberCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+                base(exception, cancelled, userState) {
+            this.results = results;
+        }
+        
+        /// <remarks/>
+        public string Result {
+            get {
+                this.RaiseExceptionIfNecessary();
+                return ((string)(this.results[0]));
+            }
+        }
+        
+        /// <remarks/>
+        public bool exists {
+            get {
+                this.RaiseExceptionIfNecessary();
+                return ((bool)(this.results[1]));
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.0.30319.34209")]
+    public delegate void getMemberCodeCompletedEventHandler(object sender, getMemberCodeCompletedEventArgs e);
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.0.30319.34209")]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    public partial class getMemberCodeCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+        
+        private object[] results;
+        
+        internal getMemberCodeCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+                base(exception, cancelled, userState) {
+            this.results = results;
+        }
+        
+        /// <remarks/>
+        public int Result {
+            get {
+                this.RaiseExceptionIfNecessary();
+                return ((int)(this.results[0]));
             }
         }
     }

@@ -70,6 +70,54 @@ namespace CentrosDeportivos.Controllers
             return RedirectToAction("Index", "Home");
         }
 
+        [HttpPost]
+        [AllowAnonymous]
+        [ValidateAntiForgeryToken]
+        public ActionResult Register(RegisterViewModel model, string returnUrl)
+        {
+            if (ModelState.IsValid)
+            {
+                CentrosDeportivos.RegistryBpelService.wsregistry mService = new RegistryBpelService.wsregistry();
+                CentrosDeportivos.RegistryBpelService.Miembro miembro = new RegistryBpelService.Miembro();
+               
+                CentrosDeportivos.RegistryBpelService.wsregistryRequest request = new RegistryBpelService.wsregistryRequest();
+                CentrosDeportivos.RegistryBpelService.wsregistryResponse response = new RegistryBpelService.wsregistryResponse();
+
+                miembro.code = "AA";
+                miembro.name = model.Name;
+                miembro.NIF = model.DNI;
+                miembro.email = model.Email;
+                miembro.password = model.Password;
+                miembro.VIP = false;
+                miembro.surname = "";
+                miembro.Province = "";
+                miembro.City = "";
+
+                request.input = miembro;
+
+                bool res;
+                string message;
+                //message = mService.registerMember(miembro, out res);
+                
+                response = mService.process(request);
+
+                res = response.@out;
+                message = response.result;
+
+                if (res)
+                {
+                    
+                    return RedirectToAction("index", "home");
+                }
+                else
+                {
+                    ModelState.AddModelError("", "Registro incorrecto");
+                }
+            }
+
+            // Si llegamos a este punto, es que se ha producido un error y volvemos a mostrar el formulario
+            return View(model);
+        }
        
 	}
 }

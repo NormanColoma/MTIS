@@ -18,6 +18,11 @@ namespace CentrosDeportivos
                 url: "{controller}/{action}/{id}",
                 defaults: new { controller = "Home", action = "Index", id = UrlParameter.Optional }
             );
+            routes.MapRoute(
+                name: "Booking PayMethod",
+                url: "{controller}/{action}/sport/{id_sport}/field/{id_field}/date/{date}/time/{time}",
+                defaults: new { controller = "Home", action = "Index", id_sport = UrlParameter.Optional, id_field = UrlParameter.Optional, date = UrlParameter.Optional, time = UrlParameter.Optional }
+            );
         }
     }
 }

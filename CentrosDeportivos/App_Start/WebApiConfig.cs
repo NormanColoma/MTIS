@@ -19,6 +19,18 @@ namespace CentrosDeportivos
                 routeTemplate: "api/{controller}/{id}",
                 defaults: new { id = RouteParameter.Optional }
             );
+
+            config.Routes.MapHttpRoute(
+                name: "sportCenter",
+                routeTemplate: "api/{controller}/{action}/{id}",
+                defaults: new { id = RouteParameter.Optional }
+            );
+
+            /**config.Routes.MapHttpRoute(
+                name: "getFields",
+                routeTemplate: "api/{controller}/{action}/{id_sport}/{id_sc}/{fecha}",
+                defaults: new { id = RouteParameter.Optional }
+            );**/
         }
     }
 }
