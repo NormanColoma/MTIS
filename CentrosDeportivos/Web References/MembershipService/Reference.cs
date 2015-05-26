@@ -43,6 +43,8 @@ namespace CentrosDeportivos.MembershipService {
         
         private System.Threading.SendOrPostCallback getMemberCodeOperationCompleted;
         
+        private System.Threading.SendOrPostCallback getNIFOperationCompleted;
+        
         private bool useDefaultCredentialsSetExplicitly;
         
         /// <remarks/>
@@ -101,6 +103,9 @@ namespace CentrosDeportivos.MembershipService {
         
         /// <remarks/>
         public event getMemberCodeCompletedEventHandler getMemberCodeCompleted;
+        
+        /// <remarks/>
+        public event getNIFCompletedEventHandler getNIFCompleted;
         
         /// <remarks/>
         [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://www.example.org/MembershipService/registerMember", RequestNamespace="http://www.example.org/MembershipService/", ResponseNamespace="http://www.example.org/MembershipService/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
@@ -315,6 +320,36 @@ namespace CentrosDeportivos.MembershipService {
             if ((this.getMemberCodeCompleted != null)) {
                 System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
                 this.getMemberCodeCompleted(this, new getMemberCodeCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
+            }
+        }
+        
+        /// <remarks/>
+        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://www.example.org/MembershipService/getNIF", RequestNamespace="http://www.example.org/MembershipService/", ResponseNamespace="http://www.example.org/MembershipService/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+        [return: System.Xml.Serialization.XmlElementAttribute("NIF", Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
+        public string getNIF([System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified)] string email) {
+            object[] results = this.Invoke("getNIF", new object[] {
+                        email});
+            return ((string)(results[0]));
+        }
+        
+        /// <remarks/>
+        public void getNIFAsync(string email) {
+            this.getNIFAsync(email, null);
+        }
+        
+        /// <remarks/>
+        public void getNIFAsync(string email, object userState) {
+            if ((this.getNIFOperationCompleted == null)) {
+                this.getNIFOperationCompleted = new System.Threading.SendOrPostCallback(this.OngetNIFOperationCompleted);
+            }
+            this.InvokeAsync("getNIF", new object[] {
+                        email}, this.getNIFOperationCompleted, userState);
+        }
+        
+        private void OngetNIFOperationCompleted(object arg) {
+            if ((this.getNIFCompleted != null)) {
+                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
+                this.getNIFCompleted(this, new getNIFCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
             }
         }
         
@@ -673,6 +708,32 @@ namespace CentrosDeportivos.MembershipService {
             get {
                 this.RaiseExceptionIfNecessary();
                 return ((int)(this.results[0]));
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.0.30319.34209")]
+    public delegate void getNIFCompletedEventHandler(object sender, getNIFCompletedEventArgs e);
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.0.30319.34209")]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    public partial class getNIFCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+        
+        private object[] results;
+        
+        internal getNIFCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+                base(exception, cancelled, userState) {
+            this.results = results;
+        }
+        
+        /// <remarks/>
+        public string Result {
+            get {
+                this.RaiseExceptionIfNecessary();
+                return ((string)(this.results[0]));
             }
         }
     }

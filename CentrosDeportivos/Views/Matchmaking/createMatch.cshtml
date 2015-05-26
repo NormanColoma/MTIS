@@ -1,0 +1,22 @@
+﻿
+@{
+    ViewBag.Title = "createMatch";
+    var message = ViewData["message"];
+    var created = ViewData["created"];
+}
+
+<h2>Partido establecido</h2>
+
+@if (created.Equals("well_created"))
+{
+    <div class="alert alert-success" role="alert">
+        <p>@message</p>
+    </div>
+}
+else
+{
+    <div class="alert alert-danger" role="alert">
+        <p>@message</p>
+    </div>
+}
+
