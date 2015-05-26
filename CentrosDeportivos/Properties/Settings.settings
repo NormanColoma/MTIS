@@ -14,5 +14,8 @@
     <Setting Name="CentrosDeportivos_TeamService_TeamService" Type="(Web Service URL)" Scope="Application">
       <Value Profile="(Default)">http://localhost:8080/ProyectoMTIS/services/TeamService/</Value>
     </Setting>
+    <Setting Name="CentrosDeportivos_MatchMakingService_MatchMakingService" Type="(Web Service URL)" Scope="Application">
+      <Value Profile="(Default)">http://localhost:8080/ProyectoMTIS/services/MatchMakingService/</Value>
+    </Setting>
   </Settings>
 </SettingsFile>

@@ -62,5 +62,15 @@ namespace CentrosDeportivos.Properties {
                 return ((string)(this["CentrosDeportivos_TeamService_TeamService"]));
             }
         }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.WebServiceUrl)]
+        [global::System.Configuration.DefaultSettingValueAttribute("http://localhost:8080/ProyectoMTIS/services/MatchMakingService/")]
+        public string CentrosDeportivos_MatchMakingService_MatchMakingService {
+            get {
+                return ((string)(this["CentrosDeportivos_MatchMakingService_MatchMakingService"]));
+            }
+        }
     }
 }

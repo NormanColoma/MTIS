@@ -1,0 +1,14 @@
+﻿.list-teams-container{
+  margin-top: 20px;
+  float: left;
+  width: 100%;
+}
+
+footer, hr{
+    float:left;
+    width:100%;
+}
+
+.list-teams-container a{
+    cursor:pointer;
+}

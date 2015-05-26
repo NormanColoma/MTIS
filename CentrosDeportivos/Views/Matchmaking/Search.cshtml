@@ -1,7 +1,7 @@
 ﻿@{
     ViewBag.Title = "Search";
 }
-
+@Styles.Render("~/Content/matchmaking.css")
 <h2>Búsqueda de rivales</h2>
 <p>Selecciona el deporte para buscar oponentes contra los que poder jugar</p>
 <div class="matchMakingContainer">
@@ -20,6 +20,12 @@
     </div>
     <input type="button" class="btn btn-primary search-teams" value="Buscar rivales" />
     @Html.ActionLink("Registrar equipo en Matchmaking", "Register", "Matchmaking", new { area = "" }, new { @class = "default-link" })
+    <div class="list-teams-container">
+        <p hidden="hidden">Equipos disponibles</p>
+        <ul class="list-teams">
+
+        </ul>
+    </div>
 </div>
 @section Scripts {
     @Scripts.Render("~/Scripts/matchmaking-searcher.js")

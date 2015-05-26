@@ -45,6 +45,8 @@ namespace CentrosDeportivos.TeamService {
         
         private System.Threading.SendOrPostCallback getTeamsInMatchMakingOperationCompleted;
         
+        private System.Threading.SendOrPostCallback getTeamByNIFOperationCompleted;
+        
         private bool useDefaultCredentialsSetExplicitly;
         
         /// <remarks/>
@@ -106,6 +108,9 @@ namespace CentrosDeportivos.TeamService {
         
         /// <remarks/>
         public event getTeamsInMatchMakingCompletedEventHandler getTeamsInMatchMakingCompleted;
+        
+        /// <remarks/>
+        public event getTeamByNIFCompletedEventHandler getTeamByNIFCompleted;
         
         /// <remarks/>
         [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://www.example.org/TeamService/createTeam", RequestNamespace="http://www.example.org/TeamService/", ResponseNamespace="http://www.example.org/TeamService/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
@@ -351,6 +356,36 @@ namespace CentrosDeportivos.TeamService {
             if ((this.getTeamsInMatchMakingCompleted != null)) {
                 System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
                 this.getTeamsInMatchMakingCompleted(this, new getTeamsInMatchMakingCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
+            }
+        }
+        
+        /// <remarks/>
+        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://www.example.org/TeamService/getTeamByNIF", RequestNamespace="http://www.example.org/TeamService/", ResponseElementName="getTeamByNIFResponse1", ResponseNamespace="http://www.example.org/TeamService/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+        [return: System.Xml.Serialization.XmlElementAttribute("match", Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
+        public Team getTeamByNIF([System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified)] string nif) {
+            object[] results = this.Invoke("getTeamByNIF", new object[] {
+                        nif});
+            return ((Team)(results[0]));
+        }
+        
+        /// <remarks/>
+        public void getTeamByNIFAsync(string nif) {
+            this.getTeamByNIFAsync(nif, null);
+        }
+        
+        /// <remarks/>
+        public void getTeamByNIFAsync(string nif, object userState) {
+            if ((this.getTeamByNIFOperationCompleted == null)) {
+                this.getTeamByNIFOperationCompleted = new System.Threading.SendOrPostCallback(this.OngetTeamByNIFOperationCompleted);
+            }
+            this.InvokeAsync("getTeamByNIF", new object[] {
+                        nif}, this.getTeamByNIFOperationCompleted, userState);
+        }
+        
+        private void OngetTeamByNIFOperationCompleted(object arg) {
+            if ((this.getTeamByNIFCompleted != null)) {
+                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
+                this.getTeamByNIFCompleted(this, new getTeamByNIFCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
             }
         }
         
@@ -843,6 +878,32 @@ namespace CentrosDeportivos.TeamService {
             get {
                 this.RaiseExceptionIfNecessary();
                 return ((Team[])(this.results[0]));
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.0.30319.34209")]
+    public delegate void getTeamByNIFCompletedEventHandler(object sender, getTeamByNIFCompletedEventArgs e);
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.0.30319.34209")]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    public partial class getTeamByNIFCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+        
+        private object[] results;
+        
+        internal getTeamByNIFCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+                base(exception, cancelled, userState) {
+            this.results = results;
+        }
+        
+        /// <remarks/>
+        public Team Result {
+            get {
+                this.RaiseExceptionIfNecessary();
+                return ((Team)(this.results[0]));
             }
         }
     }

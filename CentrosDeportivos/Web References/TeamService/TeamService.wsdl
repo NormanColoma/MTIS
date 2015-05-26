@@ -165,6 +165,20 @@
           </xsd:sequence>
         </xsd:complexType>
       </xsd:element>
+      <xsd:element name="getTeamByNIF">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="nif" type="xsd:string" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="getTeamByNIFResponse1">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="match" type="tns:Team" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
     </xsd:schema>
   </wsdl:types>
   <wsdl:message name="deleteTeamResponse">
@@ -194,11 +208,17 @@
   <wsdl:message name="deleteTeamRequest">
     <wsdl:part name="parameters" element="tns:deleteTeam" />
   </wsdl:message>
-  <wsdl:message name="NewOperation1Request">
-    <wsdl:part name="parameters" element="tns:NewOperation1" />
+  <wsdl:message name="getTeamByNIFRequest">
+    <wsdl:part name="parameters" element="tns:getTeamByNIF" />
+  </wsdl:message>
+  <wsdl:message name="getTeamByNIFResponse1">
+    <wsdl:part name="parameters" element="tns:getTeamByNIFResponse1" />
   </wsdl:message>
   <wsdl:message name="addPlayerRequest">
     <wsdl:part name="parameters" element="tns:addPlayer" />
+  </wsdl:message>
+  <wsdl:message name="NewOperation1Request">
+    <wsdl:part name="parameters" element="tns:NewOperation1" />
   </wsdl:message>
   <wsdl:message name="NewOperationResponse">
     <wsdl:part name="parameters" element="tns:NewOperationResponse" />
@@ -256,6 +276,10 @@
     <wsdl:operation name="getTeamsInMatchMaking">
       <wsdl:input message="tns:getTeamsInMatchMakingRequest" />
       <wsdl:output message="tns:getTeamsInMatchMakingResponse1" />
+    </wsdl:operation>
+    <wsdl:operation name="getTeamByNIF">
+      <wsdl:input message="tns:getTeamByNIFRequest" />
+      <wsdl:output message="tns:getTeamByNIFResponse1" />
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:binding name="TeamServiceSOAP" type="tns:TeamService">
@@ -325,6 +349,15 @@
     </wsdl:operation>
     <wsdl:operation name="getTeamsInMatchMaking">
       <soap:operation soapAction="http://www.example.org/TeamService/getTeamsInMatchMaking" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getTeamByNIF">
+      <soap:operation soapAction="http://www.example.org/TeamService/getTeamByNIF" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>
