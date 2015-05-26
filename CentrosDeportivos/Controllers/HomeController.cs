@@ -24,5 +24,12 @@ namespace CentrosDeportivos.Controllers
             return View(centers);
         }
 
+        public ActionResult Getbookings()
+        {
+            CentrosDeportivos.SportCenterService.SportCenterService sc = new CentrosDeportivos.SportCenterService.SportCenterService();
+            List<CentrosDeportivos.SportCenterService.SportCenter> centers = new List<CentrosDeportivos.SportCenterService.SportCenter>(sc.getSportCenters());
+            return View(centers);
+        }
+
     }
 }

@@ -1,0 +1,25 @@
+﻿
+@{
+    ViewBag.Title = "Getbookings";
+}
+
+<h2>Muestra reservas del centro deportivo.</h2>
+
+
+<div class="form-group">
+    <label>Centro Deportivo</label>
+    <select class="form-control" id="center">
+        <option>Seleccione el centro</option>
+        @foreach (var center in Model)
+        {
+            <option value="@center.id">@center.name</option>
+        }
+    </select>
+</div>
+<div class="showbookings">
+
+
+</div>
+@section Scripts {
+    @Scripts.Render("~/Scripts/Getbooking.js")
+}

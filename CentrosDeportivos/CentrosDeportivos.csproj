@@ -226,6 +226,7 @@
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
     </None>
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
+    <Content Include="Scripts\Getbooking.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
     <None Include="Scripts\jquery.validate-vsdoc.js" />
@@ -266,6 +267,7 @@
       <Generator>MSDiscoCodeGenerator</Generator>
       <LastGenOutput>Reference.cs</LastGenOutput>
     </Content>
+    <Content Include="Views\Home\Getbookings.cshtml" />
     <None Include="Web References\RegistryBpelService\wsregistry.wsdl" />
     <Content Include="Web References\RegistryBpelService\wsregistryResponse.datasource">
       <DependentUpon>Reference.map</DependentUpon>
